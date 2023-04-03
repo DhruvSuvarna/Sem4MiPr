@@ -1,0 +1,267 @@
+{% load static %}
+{% static 'img' as baseUrl %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Dev</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+  
+	<!-- Start WOWSlider.com HEAD section --> <!-- add to the <head> of your page -->
+	<link rel="stylesheet" type="text/css" href="{% static 'engine1/style.css' %}" />
+	<script type="text/javascript" src="{% static 'engine1/jquery.js' %}"></script>
+	<!-- End WOWSlider.com HEAD section -->
+</head>
+  <body>
+    <!--Preloader-->
+     <!-- <div id="preloader">
+      <img src="{% static 'img/preloader.gif' %}" viewBox="0 0 100 100" />
+      <circle
+        cx="50"
+        cy="50"
+        r="45"
+        fill="none"
+        stroke-width="5"
+        stroke="#000"
+        stroke-linecap="round"
+      />
+      <circle
+        cx="50"
+        cy="50"
+        r="45"
+        fill="none"
+        stroke-width="5"
+        stroke="#fff"
+        stroke-linecap="round"
+      >
+        <animate
+          attributeName="stroke-dasharray"
+          dur="2s"
+          repeatCount="indefinite"
+          from="0,200"
+          to="200,0"
+        />
+        <animate
+          attributeName="stroke-dashoffset"
+          dur="2s"
+          repeatCount="indefinite"
+          from="0"
+          to="200"
+        />
+      </circle>
+    </div> -->
+
+    <!--navbar-->
+    <div class="navbar">
+      {% if user.is_authenticated %}
+      <img src="{% static 'img/Logo.png' %}" />
+      <ul>
+        <li><a id="a1" href="#">Home</a></li>
+        <li><a href="{% static 'html/about_us.html' %}">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="{% static 'html/donate.html' %}" id="donate">Donate</a></li>
+        <li><a href="{% static 'html/suggestions.html' %}">Suggestions</a></li>
+        <li><a href="#" id="orph">For Orphanages</a></li>
+        <li><a href="accounts/signout" id="signout">Signout</a></li>
+      </ul>
+      {% else %}
+      <img src="{% static 'img/Logo.png' %}" />
+      <ul>
+        <li><a id="a1" href="accounts/signup">Home</a></li>
+        <li><a href="accounts/signup">About</a></li>
+        <li><a href="accounts/signup">Contact</a></li>
+        <li><a href="accounts/signup" id="donate">Donate</a></li>
+        <li><a href="accounts/signup">Suggestions</a></li>
+        <li><a href="accounts/signup" id="orph">For Orphanages</a></li>
+        <li><a href="accounts/signup" id="sign-up">Sign-up</a></li>
+        <li><a href="accounts/signin" id="sign-in">Sign-in</a></li>
+      </ul>
+      {% endif %}
+      <!-- <amod id="ham">
+        <div class="ham-d"></div>
+        <div class="ham-d"></div>
+        <div class="ham-d"></div>
+      </amod> -->
+    </div>
+
+    <!--login form-->
+    <!-- <div class="modal-container" id="modal-container">
+      <div class="modal" id="modal">
+        <div class="mhead" id="mhead">
+          <div id="su">New Account</div>
+          <div id="si">Sign-In</div>
+          <form id="form" method="post" action=""></form>
+        </div>
+      </div>
+    </div> -->
+
+    <!--side bar-->
+    <!-- <div class="ham-menu-container" id="ham-menu-container">
+      <div class="ham-menu" id="ham-menu">
+        <img
+          id="ham-img"
+          src="{% static 'img/happy-boys.jpg' %}"
+          height="250"
+          width="315"
+        /><br /><br />
+        <center>
+          <div id="ham-a"><a href="{% static 'html/suggestions.html' %}">Suggestions</a></div>
+        </center>
+        <br />
+        <center>
+          <div id="ham-a"><a href="#" id="sign-up2">Orphanage Sign-up</a></div>
+        </center>
+        <br />
+        <center>
+          <div id="ham-a"><a href="#" id="sign-in2">Orphanages Sign-in</a></div>
+        </center>
+        <br />
+        <center>
+          <div id="ham-a"><a href="#" id="orph">For Orphanages</a></div>
+        </center>
+        <br />
+      </div>
+    </div> -->
+
+    <!--top part background image-->
+    <!-- <div class="bgtop">
+      <img
+        src="{% static 'img/bgtop.png' %}"
+        height="600px"
+        width="100%"
+        alt="top background image"
+      />
+    </div> -->
+
+    <!-- Start WOWSlider.com BODY section --> <!-- add to the <body> of your page -->
+	<!-- Start WOWSlider.com BODY section --> <!-- add to the <body> of your page -->
+    <div id="wowslider-container1">
+      <div class="ws_images"><ul>
+        <li><img src="{% static 'data1/images/slide1.jpg' %}" alt="slide1" title="slide1" id="wows1_0"/></li>
+        <li><img src="{% static 'data1/images/slide2.jpg' %}" alt="slide2" title="slide2" id="wows1_1"/></li>
+        <li><img src="{% static 'data1/images/slide3.jpg' %}" alt="slide3" title="slide3" id="wows1_2"/></li>
+        <li><img src="{% static 'data1/images/slide4.jpg' %}" alt="carousel jquery" title="slide4" id="wows1_3"/></li>
+        <li><img src="{% static 'data1/images/slide5.jpg' %}" alt="slide5" title="slide5" id="wows1_4"/></li>
+      </ul></div>
+      <div class="ws_bullets"><div>
+        <a href="#" title="slide1"><span><img src="{% static 'data1/tooltips/slide1.jpg' %}" alt="slide1"/>1</span></a>
+        <a href="#" title="slide2"><span><img src="{% static 'data1/tooltips/slide2.jpg' %}" alt="slide2"/>2</span></a>
+        <a href="#" title="slide3"><span><img src="{% static 'data1/tooltips/slide3.jpg' %}" alt="slide3"/>3</span></a>
+        <a href="#" title="slide4"><span><img src="{% static 'data1/tooltips/slide4.jpg' %}" alt="slide4"/>4</span></a>
+        <a href="#" title="slide5"><span><img src="{% static 'data1/tooltips/slide5.jpg' %}" alt="slide5"/>5</span></a>
+      </div></div><div class="ws_script" style="position:absolute;left:-99%"><a href="#">bootstrap carousel</a> by WOWSlider.com v9.0</div>
+      <!-- <div class="ws_shadow"></div> -->
+      </div>	
+      <script type="text/javascript" src="{% static 'engine1/wowslider.js' %}"></script>
+      <script type="text/javascript" src="{% static 'engine1/script.js' %}"></script>
+      <!-- End WOWSlider.com BODY section -->
+  
+
+    <!--section below top image-->
+    <div class="mid-section">
+      <!-- orphanage images-->
+      <div id="OnEv">
+        <div class="ongoing_events">Available Orphanages</div>
+        <div class="Eimages">
+          {% for orph in orphs %}
+          <div id="E">
+            <div id="imglink">
+              <a href={{orph.weblink}} target="_blank">
+                <img
+                  src="{{orph.img.url}}"
+                  class="img-cover"
+                  alt="St. Catherine’s Home,Andheri,Mumbai"
+                />
+              </a>
+            </div>
+            <div id="content">
+              {{orph.name}}<br />
+              Location: {{orph.location}}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="ongoing_events">Events</div>
+      <!-- image carousel -->
+      <div class="slideshow-container fade">
+        <!-- Full images with numbers and message Info -->
+        <div class="Containers">
+          <div class="MessageInfo">1 / 3</div>
+          <img src="{% static 'img/car1.png' %}" style="width: 100%; height: 360px;" />
+          <div class="Info">First caption</div>
+        </div>
+
+        <div class="Containers">
+          <div class="MessageInfo">2 / 3</div>
+          <img src="{% static 'img/car2.png' %}" style="width: 100%; height: 360px;" />
+          <div class="Info">Second Caption</div>
+        </div>
+
+        <div class="Containers">
+          <div class="MessageInfo">3 / 3</div>
+          <img src="{% static 'img/car3.jpg' %}" style="width: 100%; height: 360px;" />
+          <div class="Info">Third Caption</div>
+        </div>
+
+        <!-- Back and forward buttons -->
+        <a class="Back" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="forward" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+      <br />
+
+      <!-- The circles/dots -->
+    <div style="text-align: center;">
+        <span class="dots" onclick="currentSlide(1)"></span>
+        <span class="dots" onclick="currentSlide(2)"></span>
+        <span class="dots" onclick="currentSlide(3)"></span>
+      </div>
+    </div>
+
+    <footer style="margin-top: 50px;">
+      <div class="container">
+        <div class="contact-info">
+          <h3 id="contact">Contact Us</h3>
+          <p>
+            123 Main St<br />Anytown, USA 12345<br />Phone: (555) 555-5555<br />Email:
+            info@example.com
+          </p>
+        </div>
+        <div class="social-media">
+          <h3>Follow Us</h3>
+          <ul>
+            <li>
+              <a
+                href="https://www.facebook.com/CodeWithHarry/photos"
+                target="_blank"
+                ><img src="{% static 'img/facebook.png' %}"
+              /></a>
+            </li>
+            <li>
+              <a href="https://twitter.com/" target="_blank"
+                ><img src="{% static 'img/twitter.png' %}"
+              /></a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/" target="_blank"
+                ><img src="{% static 'img/instagram.png' %}"
+              /></a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/dhruv-suvarna-18a010253/"
+                target="_blank"
+                ><img src="{% static 'img/linkedin.png' %}"
+              /></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <script src="{% static 'js/index.js' %}"></script>
+  </body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/donate.css" /> 
+    <title>Test Dev</title>
+  </head>
+  <script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+  const dropdownToggle = document.querySelectorAll('.dropdown-toggle');
+  const dropdownMenus = document.querySelectorAll('.dropdown-menu');
+
+  dropdownToggle.forEach(function(dropdown) {
+    dropdown.addEventListener('click', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      const parent = this.parentNode;
+      dropdownMenus.forEach(function(menu) {
+        if (menu.parentNode !== parent) {
+          menu.classList.remove('show');
+        }
+      });
+      parent.querySelector('.dropdown-menu').classList.toggle('show');
+    });
+  });
+
+  document.addEventListener('click', function(event) {
+    dropdownMenus.forEach(function(menu) {
+      menu.classList.remove('show');
+    });
+  });
+});
+  </script>
+ <style>
+
+  .dropdown {
+  position: relative;
+  display: inline-block;
+  padding-left: 80px;
+}
+
+.dropdown-toggle {
+  padding: 1rem 1rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  color: #4a5568;
+  background:linear-gradient(
+    to right,
+    violet,
+    rgb(143, 143, 209)
+  );
+  border: 1px solid violet;
+  box-shadow:5px 5px 6px  rgb(143, 143, 209);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  min-width: 10rem;
+}
+
+.dropdown-toggle:hover {
+  background-color: white;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 7rem;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 10rem;
+  padding: 0.5rem 0;
+  margin: 0.125rem 0 0;
+  color: #212529;
+  text-align: relative;
+  list-style: none;
+  background:linear-gradient(
+    to right,
+    rgb(238, 221, 201),
+    rgb(240, 240, 188)
+    );
+  background-clip: padding-box;
+  border: 1px solid #cbd5e0;
+  border-radius: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.dropdown-menu li {
+  display: block;
+
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 1rem 1.5rem;
+  color: #212529;
+  text-decoration: none;
+  background-color: transparent;
+  border: 0;
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu a:focus {
+  color: yellowgreen;
+  text-decoration: none;
+}
+
+.dropdown-menu a:focus {
+  outline: 0;
+  box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.5);
+}
+
+.show {
+  display: block;
+}
+button[type="button"]:hover{
+      color: #fff;
+}
+  </style>
+
+  <body>    
+    <!--navbar-->
+    <div class="navbar">
+      <img src="../img/Logo.png" />
+      <space></space>
+      <ul>
+        <li><a id="a1" href="../../">Home</a></li>
+        <li><a href="about_us.html">About</a></li>
+      </ul>
+      <!-- <a href="#contact">Contact</a> -->
+      <!-- <amod id="sign-up">Sign-up</amod>
+      <amod id="sign-in">Sign-in</amod> -->
+      <!-- <amod id="ham">
+        <div class="ham-d"></div>
+        <div class="ham-d"></div>
+        <div class="ham-d"></div>
+      </amod> -->
+    </div>
+
+    <center>
+      <h1 id="donation"
+        style="margin-top: 70px;
+          color: rgb(83, 106, 255);
+          font-family: 'Rubik', sans serif;">
+        Donate
+      </h1>
+    </center>
+    <!--<div class="dropdown">
+      <button onclick="toggleDropdown()">Select an option</button>
+      <ul id="dropdown-menu" class="dropdown-menu">
+        <li><a href="#">Option 1</a></li>
+        <li><a href="#">Option 2</a></li>
+        <li><a href="#">Option 3</a></li>
+      </ul>
+    </div>-->
+    <!--<div class="dropdown">
+      <button class="dropdown-toggle" type="button">Donate</button>
+      <ul class="dropdown-menu" id="donation-category">
+        <option value="utilities">Utilities</option>
+        <option value="services">Services</option>
+      </ul>-->
+      
+      <div class="donation-container">
+        <h2>Select a donation category:</h2>
+        <select id="donation-category">
+          <option value="">-- Select Category --</option>
+          <option value="utilities">Utilities</option>
+          <option value="services">Services</option>
+        </select>
+      
+        <div id="utilities-form" class="donation-form hidden">
+          <h2>Utilities Donation</h2>
+          <form id="utilities-donation-form">
+            <div class="donation-item">
+              <label for="money-donation">Money Donation (in Rupees):</label>
+              <input type="number" id="money-donation" name="money-donation">
+            </div>
+            <div class="donation-item">
+              <label for="grain-donation">Grain Donation:</label>
+              <select id="grain-donation" name="grain-donation">
+                <option value="">-- Select Grain Type --</option>
+                <option value="rice">Rice (Rs. 50/kg)</option>
+                <option value="wheat">Wheat (Rs. 40/kg)</option>
+                <option value="corn">Corn (Rs. 30/kg)</option>
+              </select>
+              <input type="number" id="grain-donation-quantity" name="grain-donation-quantity">
+            </div>
+            <div class="donation-item">
+              <label for="book-donation">Book Donation:</label>
+              <select id="book-donation" name="book-donation">
+                <option value="">-- Select Book Type --</option>
+                <option value="textbook">Textbook (Rs. 200)</option>
+                <option value="novel">Novel (Rs. 150)</option>
+                <option value="comic">Comic (Rs. 50)</option>
+              </select>
+              <input type="number" id="book-donation-quantity" name="book-donation-quantity">
+            </div>
+            <button type="submit">Add to Cart</button>
+          </form>
+        </div>
+      
+        <div id="cart" class="hidden">
+          <h2>Cart</h2>
+          <ul id="cart-items">
+            <!-- Cart items will be added dynamically -->
+          </ul>
+          <div id="cart-total">Total: Rs. 0</div>
+          
+        </div>
+      </div>
+      
+    </div>
+    
+    <script src="../js/donate.js"></script>
+    
+  </body>
+</html>
