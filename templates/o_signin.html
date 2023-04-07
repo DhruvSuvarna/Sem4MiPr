@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>signin</title>
+    <title>orphanage_signin</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik&family=Sriracha&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
         input[type="submit"]{ background-color: rgb(163, 216, 234); color:rgb(73, 22, 112); border-color: rgb(79, 172, 203); font-weight: bolder; font-family: 'Rubik', sans-serif;}
         input[type="submit"]:hover{ color: rgb(73, 22, 112); box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.412); font-weight: bold; font-size: 26px;}
         .gradient-custom {
-        background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+        background: linear-gradient(to right, rgb(203, 166, 17), rgb(37, 252, 119));
         height: fit-content; width: fit-content;  margin-left: 550px;border-radius: 10px;
         box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.716); 
         }
@@ -26,7 +26,7 @@
   <div class="space"></div>
   <section class="vh-100 gradient-custom">
     <div class="space"></div>
-    <center><form action="signin" method="post">
+    <center><form action="o_signin" method="post">
         {% csrf_token %}
 
         <input type="text" name="username" placeholder="Username" required><br>
@@ -39,7 +39,7 @@
         {% endfor %}
         </div>
 
-        <h3 class="b">Not Registered yet, then<a href="signup" class="d">click here</a> to signup</h3>
+        <h3 class="b">Not Registered yet, then<a href="o_signup" class="d">click here</a> to signup</h3>
         <h3 class="b"><a href="/" class="d">Go back to Homepage</a></h3>
 
     </form></center>

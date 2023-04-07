@@ -15,57 +15,34 @@
 	<!-- End WOWSlider.com HEAD section -->
 </head>
   <body>
-    <!--Preloader-->
-     <!-- <div id="preloader">
-      <img src="{% static 'img/preloader.gif' %}" viewBox="0 0 100 100" />
-      <circle
-        cx="50"
-        cy="50"
-        r="45"
-        fill="none"
-        stroke-width="5"
-        stroke="#000"
-        stroke-linecap="round"
-      />
-      <circle
-        cx="50"
-        cy="50"
-        r="45"
-        fill="none"
-        stroke-width="5"
-        stroke="#fff"
-        stroke-linecap="round"
-      >
-        <animate
-          attributeName="stroke-dasharray"
-          dur="2s"
-          repeatCount="indefinite"
-          from="0,200"
-          to="200,0"
-        />
-        <animate
-          attributeName="stroke-dashoffset"
-          dur="2s"
-          repeatCount="indefinite"
-          from="0"
-          to="200"
-        />
-      </circle>
-    </div> -->
 
     <!--navbar-->
     <div class="navbar">
       {% if user.is_authenticated %}
-      <img src="{% static 'img/Logo.png' %}" />
-      <ul>
-        <li><a id="a1" href="#">Home</a></li>
-        <li><a href="{% static 'html/about_us.html' %}">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="{% static 'html/donate.html' %}" id="donate">Donate</a></li>
-        <li><a href="{% static 'html/suggestions.html' %}">Suggestions</a></li>
-        <li><a href="#" id="orph">For Orphanages</a></li>
-        <li><a href="accounts/signout" id="signout">Signout</a></li>
-      </ul>
+        {% if user.role == 'donor' %}
+        <img src="{% static 'img/Logo.png' %}" />
+        <ul>
+          <li><a id="a1" href="#">Home</a></li>
+          <li><a href="{% static 'html/about_us.html' %}">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="{% static 'html/donate.html' %}" id="donate">Donate</a></li>
+          <li><a href="{% static 'html/suggestions.html' %}">Suggestions</a></li>
+          <li><a href="#" id="orph">For Orphanages</a></li>
+          <li><a href="accounts/signout" id="signout">Signout</a></li>
+        </ul>
+        {% elif user.role == 'orphanage' %}
+        <img src="{% static 'img/Logo.png' %}" />
+        <ul>
+          <li><a id="a1" href="accounts/signup">Home</a></li>
+        <li><a href="accounts/signup">About</a></li>
+        <li><a href="accounts/signup">Contact</a></li>
+        <li><a href="accounts/signup" id="donate">Donate</a></li>
+        <li><a href="accounts/signup">Suggestions</a></li>
+        <li><a href="orphanage/" id="orph">For Orphanages</a></li>
+        <li><a href="accounts/signup" id="sign-up">Sign-up</a></li>
+        <li><a href="accounts/signin" id="sign-in">Sign-in</a></li>
+        </ul>
+        {% endif %}
       {% else %}
       <img src="{% static 'img/Logo.png' %}" />
       <ul>
@@ -74,66 +51,12 @@
         <li><a href="accounts/signup">Contact</a></li>
         <li><a href="accounts/signup" id="donate">Donate</a></li>
         <li><a href="accounts/signup">Suggestions</a></li>
-        <li><a href="accounts/signup" id="orph">For Orphanages</a></li>
+        <li><a href="accounts/o_signup" id="orph">For Orphanages</a></li>
         <li><a href="accounts/signup" id="sign-up">Sign-up</a></li>
         <li><a href="accounts/signin" id="sign-in">Sign-in</a></li>
       </ul>
       {% endif %}
-      <!-- <amod id="ham">
-        <div class="ham-d"></div>
-        <div class="ham-d"></div>
-        <div class="ham-d"></div>
-      </amod> -->
     </div>
-
-    <!--login form-->
-    <!-- <div class="modal-container" id="modal-container">
-      <div class="modal" id="modal">
-        <div class="mhead" id="mhead">
-          <div id="su">New Account</div>
-          <div id="si">Sign-In</div>
-          <form id="form" method="post" action=""></form>
-        </div>
-      </div>
-    </div> -->
-
-    <!--side bar-->
-    <!-- <div class="ham-menu-container" id="ham-menu-container">
-      <div class="ham-menu" id="ham-menu">
-        <img
-          id="ham-img"
-          src="{% static 'img/happy-boys.jpg' %}"
-          height="250"
-          width="315"
-        /><br /><br />
-        <center>
-          <div id="ham-a"><a href="{% static 'html/suggestions.html' %}">Suggestions</a></div>
-        </center>
-        <br />
-        <center>
-          <div id="ham-a"><a href="#" id="sign-up2">Orphanage Sign-up</a></div>
-        </center>
-        <br />
-        <center>
-          <div id="ham-a"><a href="#" id="sign-in2">Orphanages Sign-in</a></div>
-        </center>
-        <br />
-        <center>
-          <div id="ham-a"><a href="#" id="orph">For Orphanages</a></div>
-        </center>
-        <br />
-      </div>
-    </div> -->
-
-    <!--top part background image-->
-    <!-- <div class="bgtop">
-      <img
-        src="{% static 'img/bgtop.png' %}"
-        height="600px"
-        width="100%"
-        alt="top background image"
-      />
-    </div> -->
 
     <!-- Start WOWSlider.com BODY section --> <!-- add to the <body> of your page -->
 	<!-- Start WOWSlider.com BODY section --> <!-- add to the <body> of your page -->
@@ -168,7 +91,11 @@
           {% for orph in orphs %}
           <div id="E">
             <div id="imglink">
+              {% if user.is_authenticated and user.role == 'donor' %}
               <a href={{orph.weblink}} target="_blank">
+              {% else %}
+              <a href="accounts/signup">
+              {% endif %}
                 <img
                   src="{{orph.img.url}}"
                   class="img-cover"
