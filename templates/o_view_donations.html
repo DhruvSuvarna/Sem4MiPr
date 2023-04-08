@@ -1,0 +1,9 @@
+{% extends 'orphanage.html' %}
+
+{% block content %}
+    <div>
+    {% for donation in donations %}
+        <h3>{{donation}}</h3>
+    {% endfor %}
+    </div>
+{% endblock %}

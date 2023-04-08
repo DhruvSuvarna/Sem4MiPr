@@ -21,8 +21,9 @@
       {% if user.is_authenticated %}
         {% if user.role == 'donor' %}
         <img src="{% static 'img/Logo.png' %}" />
+        <a id="a1" style="padding-left: 5px;" href="/">OrphaConnect</a>
         <ul>
-          <li><a id="a1" href="#">Home</a></li>
+          <li><a id="a1" href="/">Home</a></li>
           <li><a href="{% static 'html/about_us.html' %}">About</a></li>
           <li><a href="#contact">Contact</a></li>
           <li><a href="{% static 'html/donate.html' %}" id="donate">Donate</a></li>
@@ -32,10 +33,11 @@
         </ul>
         {% elif user.role == 'orphanage' %}
         <img src="{% static 'img/Logo.png' %}" />
+        <a id="a1" style="padding-left: 5px;" href="accounts/signup">OrphaConnect</a>
         <ul>
           <li><a id="a1" href="accounts/signup">Home</a></li>
-        <li><a href="accounts/signup">About</a></li>
-        <li><a href="accounts/signup">Contact</a></li>
+        <li><a href="{% static 'html/about_us.html' %}">About</a></li>
+        <li><a href="#contact">Contact</a></li>
         <li><a href="accounts/signup" id="donate">Donate</a></li>
         <li><a href="accounts/signup">Suggestions</a></li>
         <li><a href="orphanage/" id="orph">For Orphanages</a></li>
@@ -45,10 +47,11 @@
         {% endif %}
       {% else %}
       <img src="{% static 'img/Logo.png' %}" />
+      <a id="a1" style="padding-left: 5px;" href="accounts/signup">OrphaConnect</a>
       <ul>
         <li><a id="a1" href="accounts/signup">Home</a></li>
-        <li><a href="accounts/signup">About</a></li>
-        <li><a href="accounts/signup">Contact</a></li>
+        <li><a href="{% static 'html/about_us.html' %}">About</a></li>
+        <li><a href="#contact">Contact</a></li>
         <li><a href="accounts/signup" id="donate">Donate</a></li>
         <li><a href="accounts/signup">Suggestions</a></li>
         <li><a href="accounts/o_signup" id="orph">For Orphanages</a></li>

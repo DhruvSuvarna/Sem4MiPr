@@ -1,0 +1,12 @@
+{% extends 'orphanage.html' %}
+
+{% block content %}
+<div>
+    <form action="add_details" method="post">
+    {% csrf_token %}
+        Orphanage Name: <input type="text" name="o_name" required><br>
+        Upload Image: <input type="file" name="o_img" required> <br>
+        <input type="submit" value="Add">
+    </form>
+</div>
+{% endblock %}
