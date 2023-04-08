@@ -2,11 +2,88 @@
 
 {% block content %}
 <div>
-    <form action="add_details" method="post">
+    <!-- <form action="add_details" method="post">
     {% csrf_token %}
         Orphanage Name: <input type="text" name="o_name" required><br>
         Upload Image: <input type="file" name="o_img" required> <br>
+        State: <input type="text" name="o_state" required><br>
+        City: <input type="text" name="o_city" required><br>
+        District: <input type="text" name="o_district" required><br>
+        weblink: <br>
+        <textarea name="" id="" cols="30" rows="4"></textarea><br><br>
         <input type="submit" value="Add">
+    </form> -->
+    <h3 class="text-center">Register Orphanage here</h3>
+    <form action="add_details" method="post" style="border: 2px solid rgb(11, 172, 86); border-radius: 2vh; background-color:rgb(243, 243, 243);">
+    {% csrf_token %}
+        <div class="mx-3 my-3">
+            <div class="mb-3">
+                <label for="defaultInputExample" class="form-label">Name of Orphanage:</label>
+                <input class="form-control" type="text" name="o_name" placeholder="Enter Orphanage Name" id="defaultInputExample">
+            </div>
+
+            <div class="mb-3">
+                <label for="formFile" class="form-label">Image:</label>
+                <input class="form-control" name="o_img" type="file" id="formFile">
+            </div>
+
+            <div class="mb-3">
+                <label for="validationDefault04" class="form-label">State:</label>
+                <select class="form-select" name="o_state" id="validationDefault04" required>
+                    <option selected disabled value="">Choose State</option>
+                    <option>Maharashtra</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="validationDefault04" class="form-label">City:</label>
+                <select class="form-select" name="o_city" id="validationDefault04" required>
+                    <option selected disabled value="">Choose City</option>
+                    <option>Mumbai</option>
+                    <option>Pune</option>
+                    <option>Thane</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="validationDefault04" class="form-label">District:</label>
+                <select class="form-select" name="o_district" id="validationDefault04" required>
+                    <option selected disabled value="">Choose District</option>
+                    <option>Vasai</option>
+                    <option>Bhayandar</option>
+                    <option>Mira Bhayandar</option>
+                    <option>MiraRoad</option>
+                    <option>Dahisar</option>
+                    <option>Borivali</option>
+                    <option>Kandivali</option>
+                    <option>Goregaon</option>
+                    <option>Malad</option>
+                    <option>Ram Mandir</option>
+                    <option>Jogeshwari</option>
+                    <option>Andheri</option>
+                    <option>Vile Parle</option>
+                    <option>Santacruz</option>
+                    <option>Charni Road</option>
+                    <option>Churchgate</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Address:</label>
+                <textarea class="form-control" name="o_address" id="exampleFormControlTextarea1" placeholder="Enter your Address here" rows="3"></textarea>
+            </div>
+            
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Weblink:</label>
+                <textarea class="form-control" name="o_weblink" id="exampleFormControlTextarea1" placeholder="Enter your website link here" rows="3"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </div>
+        </div>
+        
     </form>
 </div>
+<br><br><br><br><br>
 {% endblock %}

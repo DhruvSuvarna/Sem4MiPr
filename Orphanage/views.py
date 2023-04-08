@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from .models import Orphanage_Details
 # Create your views here.
 
 def orphanage(request):
@@ -13,8 +13,15 @@ def view_donations(request):
 def add_details(request):
     if request.method == 'POST':
         o_name = request.POST['o_name']
-        if request.FILES == 'o_img':
-            o_img = request.FILES['o_img']
+        o_img = request.POST['o_img']
+        o_state = request.POST['o_name']
+        o_city = request.POST['o_name']
+        o_district = request.POST['o_name']
+        o_address = request.POST['o_name']
+        o_weblink = request.POST['o_name']
+
+        orphanage_details = Orphanage_Details.objects.create(o_name= o_name, o_img= o_img, o_state= o_state, o_city= o_city, o_district= o_district, o_address= o_address, o_weblink= o_weblink)
+        orphanage_details.save()
     return render(request, 'o_add_details.html')
 
 
