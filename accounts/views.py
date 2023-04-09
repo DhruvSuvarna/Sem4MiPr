@@ -43,10 +43,10 @@ def signin(request):
         password = request.POST['password']
 
         customuser = auth.authenticate(username=username, password=password)
-        U = CustomUser.objects.get(username=username)
-
-        if U.role == 'donor':
-            if customuser is not None:
+        
+        if customuser is not None:
+            U = CustomUser.objects.get(username=username)
+            if U.role == 'donor':
                 auth.login(request, customuser)
                 return redirect('/')
             else:
@@ -102,10 +102,10 @@ def o_signin(request):
         password = request.POST['password']
 
         customuser = auth.authenticate(username=username, password=password)
-        U = CustomUser.objects.get(username=username)
-
-        if U.role == 'orphanage':
-            if customuser is not None:
+        
+        if customuser is not None:
+            U = CustomUser.objects.get(username=username)
+            if U.role == 'orphanage':
                 auth.login(request, customuser)
                 return redirect('/orphanage/')
             else:

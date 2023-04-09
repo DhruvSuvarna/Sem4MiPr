@@ -1,9 +1,60 @@
 {% extends 'orphanage.html' %}
 
 {% block content %}
-    <div>
+    <!-- <div>
     {% for detail in details %}
         <h3>{{detail}}</h3>
     {% endfor %}
+    </div> -->
+    <div style="border: 2px solid rgb(11, 172, 86); border-radius: 2vh; background-color:rgb(243, 243, 243);">    
+        <h3 class="text-center">View Orphanage Details</h3>
+        <!-- <form action="add_details" method="post" style="border: 2px solid rgb(11, 172, 86); border-radius: 2vh; background-color:rgb(243, 243, 243);"> -->
+        {% csrf_token %}
+            <div class="mx-3 my-3">
+                
+                {% if check == 0 %}
+                    <div>
+                        <h3>{{nodetails}}</h3>
+                    </div>
+                {% else %}
+                    {% for detail in details%}
+                    <!--Name of Orphanage goes here-->
+                    <div class="mb-3">
+                        <h3>Orphanage Name: {{detail.o_name}}</h3>
+                    </div>
+                    <!--Image goes here-->
+                    <div class="mb-3">
+                        <h3>Image:</h3><img src="{{detail.o_img.url}}" height="200" width="200">
+                    </div>
+                    <!--State goes here-->
+                    <div class="mb-3">
+                        <h3>State: {{detail.o_state}}</h3>
+                    </div>
+                    <!--City goes here-->
+                    <div class="mb-3">
+                        <h3>City: {{detail.o_city}}</h3>
+                    </div>
+                    <!--District goes here-->
+                    <div class="mb-3">
+                        <h3>District: {{detail.o_district}}</h3>
+                    </div>
+                    <!--Address goes here-->
+                    <div class="mb-3">
+                        <h3>Address: {{detail.o_address}}</h3>
+                    </div>
+                    <!--Weblink goes here-->
+                    <div class="mb-3">
+                        <h3>Weblink: {{detail.o_weblink}}</h3>
+                    </div>
+                    {% endfor %}
+                {% endif %}
+                <!--Submit Button-->
+                <!-- <div class="mb-3">
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </div> -->
+            </div>
+            
+        <!-- </form> -->
     </div>
+    <br><br><br><br><br>
 {% endblock %}
