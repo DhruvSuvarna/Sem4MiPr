@@ -73,6 +73,31 @@ utilitiesDonationForm.addEventListener('submit', function (event) {
 
   // Reset form
  cart.appendChild(cartProceedButton);
+
+ document.addEventListener("DOMContentLoaded", function(event) {
+  const dropdownToggle = document.querySelectorAll('.dropdown-toggle');
+  const dropdownMenus = document.querySelectorAll('.dropdown-menu');
+
+    dropdownToggle.forEach(function(dropdown) {
+      dropdown.addEventListener('click', function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        const parent = this.parentNode;
+        dropdownMenus.forEach(function(menu) {
+          if (menu.parentNode !== parent) {
+            menu.classList.remove('show');
+          }
+        });
+        parent.querySelector('.dropdown-menu').classList.toggle('show');
+      });
+    });
+
+    document.addEventListener('click', function(event) {
+      dropdownMenus.forEach(function(menu) {
+        menu.classList.remove('show');
+      });
+    });
+  });
    
  
 });

@@ -119,90 +119,25 @@ button[type="button"]:hover{
 }
   </style>
 
-  <body>
-    <!-- Preloader
-    <div id="preloader">
-      <img src="../img/preloader.gif" viewBox="0 0 100 100">
-        <circle
-          cx="50"
-          cy="50"
-          r="45"
-          fill="none"
-          stroke-width="5"
-          stroke="#000"
-          stroke-linecap="round"
-        />
-        <circle
-          cx="50"
-          cy="50"
-          r="45"
-          fill="none"
-          stroke-width="5"
-          stroke="#fff"
-          stroke-linecap="round"
-        >
-          <animate
-            attributeName="stroke-dasharray"
-            dur="2s"
-            repeatCount="indefinite"
-            from="0,200"
-            to="200,0"
-          />
-          <animate
-            attributeName="stroke-dashoffset"
-            dur="2s"
-            repeatCount="indefinite"
-            from="0"
-            to="200"
-          />
-        </circle>
-    </div>-->
-
+  <body>    
     <!--navbar-->
     <div class="navbar">
       <img src="../img/Logo.png" />
-      <a id="a1" href="../index.html">Home</a>
-      <a href="about_us.html">About</a>
-      <a href="#contact">Contact</a>
-      <amod id="sign-up">Sign-up</amod>
-      <amod id="sign-in">Sign-in</amod>
-      <amod id="ham">
+      <space></space>
+      <ul>
+        <li><a id="a1" href="../../">Home</a></li>
+        <li><a href="about_us.html">About</a></li>
+      </ul>
+      <!-- <a href="#contact">Contact</a> -->
+      <!-- <amod id="sign-up">Sign-up</amod>
+      <amod id="sign-in">Sign-in</amod> -->
+      <!-- <amod id="ham">
         <div class="ham-d"></div>
         <div class="ham-d"></div>
         <div class="ham-d"></div>
-      </amod>
+      </amod> -->
     </div>
 
-    <!--login form-->
-    <div class="modal-container" id="modal-container">
-      <div class="modal" id="modal">
-        <div class="mhead" id="mhead">
-          <div id="su">New Account</div>
-          <div id="si">Sign-In</div>
-          <form id="form" action=""></form>
-        </div>
-      </div>
-    </div>
-
-    <!--side bar-->
-    <div class="ham-menu-container" id="ham-menu-container">
-      <div class="ham-menu" id="ham-menu">
-        <img
-          id="ham-img"
-          src="../img/happy-boys.jpg"
-          height="250"
-          width="315"
-        /><br /><br />
-        <center>
-          <div id="ham-a"><a href="../html/suggestions.html">Donate</a></div>
-        </center>
-        <br />
-        <center>
-          <div id="ham-a"><a href="../html/suggestions.html">Suggestions</a></div>
-        </center>
-        <br />
-      </div>
-    </div>
     <center>
       <h1 id="donation"
         style="margin-top: 70px;
@@ -219,20 +154,20 @@ button[type="button"]:hover{
         <li><a href="#">Option 3</a></li>
       </ul>
     </div>-->
-    <div class="dropdown">
+    <!--<div class="dropdown">
       <button class="dropdown-toggle" type="button">Donate</button>
       <ul class="dropdown-menu" id="donation-category">
         <option value="utilities">Utilities</option>
         <option value="services">Services</option>
-      </ul>
+      </ul>-->
       
-      <!--<div class="donation-container">
+      <div class="donation-container">
         <h2>Select a donation category:</h2>
         <select id="donation-category">
           <option value="">-- Select Category --</option>
           <option value="utilities">Utilities</option>
           <option value="services">Services</option>
-        </select>-->
+        </select>
       
         <div id="utilities-form" class="donation-form hidden">
           <h2>Utilities Donation</h2>
@@ -276,48 +211,7 @@ button[type="button"]:hover{
       </div>
       
     </div>
-    <footer class="myfooter">
-      <div class="mycontainer">
-        <div class="contact-info">
-          <h3 id="contact">Contact Us</h3>
-          <p>
-            123 Main St<br />Anytown, USA 12345<br />Phone: (555) 555-5555<br />Email:
-            info@example.com
-          </p>
-        </div>
-        <div class="social-media">
-          <h3>Follow Us</h3>
-          <ul>
-            <li>
-              <a
-                href="https://www.facebook.com/CodeWithHarry/photos"
-                target="_blank"
-                ><img src="../img/facebook.png"
-              /></a>
-            </li>
-            <li>
-              <a href="https://twitter.com/" target="_blank"
-                ><img src="../img/twitter.png"
-              /></a>
-            </li>
-            <li>
-              <a href="https://www.instagram.com/" target="_blank"
-                ><img src="../img/instagram.png"
-              /></a>
-            </li>
-            <li>
-              <a
-                href="https://www.linkedin.com/in/dhruv-suvarna-18a010253/"
-                target="_blank"
-                ><img src="../img/linkedin.png"
-              /></a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </footer>
-
-    <script src="../index.js"></script>
+    
     <script src="../js/donate.js"></script>
     
   </body>
