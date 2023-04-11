@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+  {% block content %}
+    <center>
+      <h1
+        style="
+          margin-top: 90px;
+          color: rgb(83, 106, 255);
+          font-family: 'Rubik', sans serif; margin-bottom: 3vh;
+        "
+      >
+        Help us Improve!!
+      </h1>
+    </center>
+    <div class="suggestion-box">
+      <h2>Send us your suggestion!</h2>
+      <form id="suggestion-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="suggestion">Suggestion:</label>
+        <textarea id="suggestion" name="suggestion" required></textarea>
+        <center><button type="submit">Submit</button></center>
+      </form>
+      <div id="response"></div>
+    </div>
+    
+    <script src="../js/suggestions.js"></script>
+
+  {% endblock %}

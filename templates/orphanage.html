@@ -68,7 +68,7 @@
         <img src="{% static 'img/Logo.png' %}" />
         <a style="padding-left: 5px; " href="/">OrphaConnect</a>
         <div class="ul">
-          <a id="a" href="/" class="d">Back to Homepage</a>
+          <a id="a" href="/">Back to Homepage</a>
           {% if user.is_authenticated and user.role == 'orphanage' %}
           <a href="../accounts/o_signout" id="o_signout">Signout</a>
           {% endif %}

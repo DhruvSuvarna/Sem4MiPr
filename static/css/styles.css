@@ -1,0 +1,479 @@
+/* -------------------------------- INDEX PAGE CSS ------------------------------------------*/
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Rubik&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik&family=Sriracha&display=swap");
+
+body {
+  background: #e0e0e0;
+  font-family: "Poppins", sans-serif;
+  margin: 0px;
+  z-index: -20;
+  width: auto;
+}
+.navbar {
+  position: fixed;
+  z-index:100;
+  top: 0;
+  background: linear-gradient(
+    to right,
+    rgb(255, 145, 71, 0.8),
+    rgb(158, 122, 255, 0.8)
+  );
+  width: 100%;
+  height: 70px;
+  font-size: 20px;
+  font-weight: bolder;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  box-shadow: 1px 1px 16px rgb(47, 42, 76, 0.6);
+}
+.navbar .ul{
+  display:flex; list-style: none; margin-left: auto; margin-right: 3vw;
+}
+#a1 {
+  padding-left: 50px;
+}
+.navbar img {
+  height: 50px;
+  width: auto;
+  margin-left: 10px;
+}
+
+.navbar a{
+  color: rgb(31, 17, 100); 
+  text-decoration: none; font-family: "Rubik", "sans-serifs"; transition: color 0.5s;
+  padding-left: 50px;
+}
+.navbar a:hover{ 
+  color: rgb(246, 237, 225);
+  cursor: pointer;
+}
+
+.navbar a:hover{ 
+  color: rgb(246, 237, 225);
+  cursor: pointer;
+}
+
+.mid-section {
+  z-index: 2;
+  background: #e0e0e0;
+  width: 100%;
+  height: fit-content;
+  margin-top: 0;
+}
+
+#OnEv {
+  padding: 230px;
+  padding-left: 190px;
+  padding-right: 210px;
+  padding-top: 100px;
+  padding-bottom: 0px;
+  margin-bottom: 50px;
+  width: 100%;
+}
+
+.ongoing_events {
+  font-family: "Rubik", sans-serif;
+  width: 100%;
+  padding-left: 10px;
+  text-align: center;
+  color: rgb(78, 78, 86);
+  font-size: 30px;
+  font-weight: bolder;
+  text-decoration: underline;
+  margin-bottom: 30px;
+}
+
+.img-cover {
+  width: 350px;
+  height: 170px;
+  padding: 0;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  box-shadow: 3px 3px 7px #b5b5b5, -3px -3px 7px #ffffff;
+}
+
+.Eimages {
+  align-content: center;
+}
+
+#E {
+  flex-direction: column;
+  font-weight: 700;
+  margin-left: 20px;
+  border: none;
+  padding: 0;
+  width: 350px;
+  height: 300px;
+  display: inline-block;
+  margin-bottom: 20px;
+  border-radius: 25px;
+  background: #e0e0e0;
+  box-shadow: 3px 3px 7px #cccccc, -3px -3px 7px #ffffff;
+}
+
+#E:hover {
+  box-shadow: 1px 1px 16px rgb(29, 6, 41);
+  cursor: pointer;
+}
+
+#content {
+  padding: 15px;
+  font-size: 18px;
+  font-weight: 200;
+  font-family: Rubik, sans serif;
+  color: rgb(78, 78, 86);
+}
+
+footer {
+  background: linear-gradient(to right, rgb(30, 0, 66, 0.8), rgb(0, 0, 0, 0.8));
+  padding: 2rem 0;
+  color: #ffffff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.contact-info {
+  flex-basis: 50%;
+  margin-bottom: 2rem;
+}
+
+.social-media {
+  flex-basis: 30%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.social-media h3 {
+  flex-basis: 100%;
+  margin-bottom: 1rem;
+}
+
+.social-media ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.social-media li {
+  flex-basis: 25%;
+}
+
+.social-media a {
+  display: block;
+  color: #ffffff;
+  font-size: 24px;
+  transition: color 0.2s ease-in-out;
+}
+
+.social-media a:hover {
+  color: #0077b5;
+}
+
+@media screen and (max-width: 768px) {
+  .contact-info,
+  .social-media {
+    flex-basis: 100%;
+  }
+
+  .social-media li {
+    flex-basis: 33.33%;
+  }
+}
+
+
+
+/* -------------------------------- DONATE PAGE CSS ------------------------------------------*/
+
+
+
+.dropdown {
+  position: relative; display: inline-block; padding-left: 80px;
+}
+
+.dropdown-toggle {
+  padding: 1rem 1rem; font-size: 1.25rem; line-height: 1.5;
+  color: #4a5568; background:linear-gradient(to right,violet,rgb(143, 143, 209));
+  border: 1px solid violet; box-shadow:5px 5px 6px  rgb(143, 143, 209); border-radius: 0.5rem;
+  cursor: pointer; min-width: 10rem;
+}
+
+.dropdown-toggle:hover {
+  background-color: white;
+}
+
+.dropdown-menu {
+  position: absolute; top: 100%; left: 7rem; z-index: 1000; display: none;
+  float: left; min-width: 10rem; padding: 0.5rem 0; margin: 0.125rem 0 0;
+  color: #212529; text-align: relative; list-style: none;
+  background:linear-gradient(to right,rgb(238, 221, 201),rgb(240, 240, 188));
+  background-clip: padding-box; border: 1px solid #cbd5e0; border-radius: 0.5rem; 
+  font-size: 1.25rem;
+}
+
+.dropdown-menu li {
+  display: block;
+}
+
+.dropdown-menu a {
+  display: block; padding: 1rem 1.5rem; color: #212529; text-decoration: none;
+  background-color: transparent; border: 0;
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu a:focus {
+  color: yellowgreen; text-decoration: none;
+}
+
+.dropdown-menu a:focus {
+  outline: 0; box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.5);
+}
+
+.show {
+  display: block;
+}
+
+.donation-item {
+  margin-bottom: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Styles for the donation form */
+.donation-container {
+  background-color: #f5f5f5;
+  font-family: 'Rubik', sans-serif;
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.donation-container h2{
+  font-family: 'Rubik', sans-serif; font-size: 24px;
+  margin-top: 0;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="number"] {
+  width: 100px;
+}
+
+select {
+  width: 200px;
+}
+
+button[type="submit"] {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+button[type="button"]:hover{
+      color: #fff;
+}
+
+/* Styles for the cart */
+#cart {
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+  padding-top: 20px;
+}
+
+#cart-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.cart-item .item-name {
+  flex-grow: 1;
+}
+
+.cart-item .item-price {
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+#cart-total {
+  margin-top: 10px;
+  text-align: right;
+  font-weight: bold;
+}
+/* General Styles */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Rubik', sans-serif;
+  font-size: 16px;
+}
+
+h2 {
+  margin-bottom: 1rem;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Donation Form */
+
+.donation-form {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin-top: 20px;
+}
+
+.donation-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.donation-item label {
+  flex: 1;
+}
+
+.donation-item select,
+.donation-item input[type="number"] {
+  margin-left: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Cart */
+
+#cart {
+  margin-top: 2rem;
+}
+
+#cart-items li {
+  margin-bottom: 0.5rem;
+}
+
+#cart-total {
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+/* Proceed to Payment Button */
+
+#proceed-to-payment {
+  display: none;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#cart-total.has-items + #proceed-to-payment {
+  display: block;
+}
+
+
+/* -------------------------------- SUGGESTION PAGE CSS ------------------------------------------*/
+
+#suggestion-form input {
+  width: 75%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+.suggestion-box {
+  max-width:700px;
+  height: auto;
+  margin: auto;
+  padding: 10px;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+}
+
+
+#suggestion-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#suggestion-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#suggestion-form input[type="text"],
+#suggestion-form input[type="email"]{
+  width: 97%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 10px;
+}
+
+#suggestion-form button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#suggestion-form button[type="submit"]:hover {
+  background-color: #3e8e41;
+  box-shadow: 4px 4px 6px #3e8e41;
+}
+
+#error-message {
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
+}
+#suggestion-form textarea{
+  width: 97%;
+  padding: 10px;
+  height: 90px;
+  border: none;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
