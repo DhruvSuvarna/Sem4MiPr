@@ -30,6 +30,7 @@
           <a href="donation" id="donate">Donate</a>
           <a href="suggestion">Suggestions</a>
           <a href="#" id="orph">For Orphanages</a>
+          <a href="donor" id="orph">For Donors</a>
           <a href="accounts/signout" id="signout">Signout</a>
         </div>
         {% elif user.role == 'admin' %}
@@ -42,7 +43,9 @@
           <a href="donation" id="donate">Donate</a>
           <a href="suggestion">Suggestions</a>
           <a href="orphanage/o_signup" id="orph">For Orphanages</a>
-          <a href="accounts/signout" id="signout">Signout</a>
+          <a href="accounts/signup" id="orph">For Donors</a>
+          <a href="accounts/signup" id="sign-up">Sign-up</a>
+          <a href="accounts/signin" id="sign-in">Sign-in</a>
         </div>
         {% elif user.role == 'orphanage' %}
         <img src="{% static 'img/Logo.png' %}" />
@@ -54,6 +57,7 @@
           <a href="accounts/signup" id="donate">Donate</a>
           <a href="accounts/signup">Suggestions</a>
           <a href="orphanage/" id="orph">For Orphanages</a>
+          <a href="accounts/signup" id="orph">For Donors</a>
           <a href="accounts/signup" id="sign-up">Sign-up</a>
           <a href="accounts/signin" id="sign-in">Sign-in</a>
         </div>
@@ -68,6 +72,7 @@
         <a href="accounts/signup" id="donate">Donate</a>
         <a href="accounts/signup">Suggestions</a>
         <a href="accounts/o_signup" id="orph">For Orphanages</a>
+        <a href="accounts/signup" id="orph">For Donors</a>
         <a href="accounts/signup" id="sign-up">Sign-up</a>
         <a href="accounts/signin" id="sign-in">Sign-in</a>
       </div>
@@ -112,11 +117,11 @@
           {% for orph in orphs %}
           <div id="E">
             <div id="imglink">
-              {% if user.is_authenticated and user.role == 'donor' %}
+              <!-- {% if user.is_authenticated and user.role == 'donor' %} -->
               <a href={{orph.weblink}} target="_blank">
-              {% else %}
+              <!-- {% else %}
               <a href="accounts/signup">
-              {% endif %}
+              {% endif %} -->
                 <img
                   src="{{orph.img.url}}"
                   class="img-cover"

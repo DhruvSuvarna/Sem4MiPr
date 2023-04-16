@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'Orph.apps.OrphConfig',
     'accounts.apps.AccountsConfig',
+    'Donor.apps.DonorConfig',
     'Orphanage.apps.OrphanageConfig',
     'django.contrib.admin',
     'django.contrib.auth',

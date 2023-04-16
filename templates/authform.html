@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Signup</title>
+    <!-- Include Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Rubik&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Rubik&family=Sriracha&display=swap");
+        body{
+            font-family: 'rubik', sans-serif;
+        }
+        .navbar {
+            position: fixed;
+            z-index:100;
+            top: 0;
+            background: linear-gradient(
+              to right,
+              rgb(255, 145, 71, 0.8),
+              rgb(158, 122, 255, 0.8)
+            );
+            width: 100%;
+            height: 70px;
+            font-size: 20px;
+            font-weight: bolder;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            box-shadow: 1px 1px 16px rgb(47, 42, 76, 0.6);
+          }
+          .navbar .ul{
+            display:flex; list-style: none; margin-left: auto; margin-right: 3vw;
+          }
+          #a1 {
+            padding-left: 50px;
+          }
+          .navbar img {
+            height: 50px;
+            width: auto;
+            margin-left: 10px;
+          }
+          /*.navbar li{
+            
+          }*/
+          
+          .navbar a{
+            color: rgb(31, 17, 100); 
+            text-decoration: none; font-family: "Rubik", "sans-serifs"; transition: color 0.5s;
+            padding-left: 50px;
+          }
+          .navbar a:hover{ 
+            color: rgb(246, 237, 225);
+            cursor: pointer;
+          }
+
+          .d_icon:hover{
+            box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.716); padding: 10px 25px !important;
+          }
+
+          .o_icon:hover{
+            box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.716); padding: 10px 10px !important;
+          }
+    </style>
+    {% block style %}
+        <!-- Extra details will be added here -->
+    {% endblock %}
+  </head>
+  <body>
+    <!-- Navigation bar -->
+
+    <div class="navbar">
+        <img src="{% static 'img/Logo.png' %}" />
+        <a style="padding-left: 5px; " href="/">OrphaConnect</a>
+        <div class="ul">
+          <a id="a" href="/">Back to Homepage</a>
+        </div>
+    </div>
+
+    <br><br><br><br>
+    
+    <!-- Main content -->
+    <div class="container px-5 py-4" style="border-radius: 10px; background-color:rgb(55, 41, 125); width: fit-content; height: fit-content;">
+        <ul class="d-flex justify-content-center" style="list-style: none;">
+            <li class="mx-3">
+                <div class="px-4 py-2 d_icon" style="border-radius: 10%; background:linear-gradient(to right, rgb(255, 170, 0), rgb(255, 217, 3));">
+                  <a href="signup" style="text-decoration: none;">
+                    <img  src="{% static 'img/icons/donor.png' %}" height="50" width="50"><br>
+                    <h6 class="mx-1" style="color: black; font-weight: bold;">Donor</h6>
+                  </a>
+                </div>
+            </li>
+            <li class="mx-5">
+                <div class="px-2 py-2 o_icon" style="border-radius: 10%; background:linear-gradient(to right, rgb(19, 137, 26), rgb(24, 206, 36));">
+                  <a href="o_signup" style="text-decoration: none;">
+                    <img class="mx-3" src="{% static 'img/icons/orphanage.png' %}" height="50" width="50"><br>
+                    <h6 style="color: black; font-weight: bold;">Orphanage</h6>
+                  </a>
+                </div>
+            </li>
+        </ul>
+        {% block content %}
+            <!-- Extra details will be added here -->
+        {% endblock %}
+    </div>
+        
+    
+
+    <!-- Include Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

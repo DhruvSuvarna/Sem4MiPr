@@ -1,50 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>orphanage_signin</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik&family=Sriracha&display=swap" rel="stylesheet">
+{% extends 'authform2.html' %}
+
+  {% block style %}
     <style>
-        body{ margin: 0px;}
-        h3{color:rgb(248, 227, 227); font-family: 'Rubik', sans-serif;}
-        input{ border-radius: 5px; font-size:25px; background-color: rgb(250, 250, 250); font-family: 'Rubik', sans-serif; margin-left: 50px; margin-right: 50px;}
-        input[type="submit"]{ background-color: rgb(163, 216, 234); color:rgb(73, 22, 112); border-color: rgb(79, 172, 203); font-weight: bolder; font-family: 'Rubik', sans-serif;}
-        input[type="submit"]:hover{ color: rgb(73, 22, 112); box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.412); font-weight: bold; font-size: 26px;}
-        .gradient-custom {
-        background: linear-gradient(to right, rgb(203, 166, 17), rgb(37, 252, 119));
-        height: fit-content; width: fit-content;  margin-left: 550px;border-radius: 10px;
-        box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.716); 
-        }
-        .space{ height: 70px;}
+      body{ margin: 0px;}
+      h3{color:rgb(248, 227, 227); font-family: 'Rubik', sans-serif;}
+      input{ border-radius: 5px; font-size:25px; background-color: rgb(250, 250, 250); font-family: 'Rubik', sans-serif; margin-left: 50px; margin-right: 50px;}
+      input[type="submit"]{ background-color: rgb(163, 216, 234); color:rgb(73, 22, 112); border-color: rgb(79, 172, 203); font-weight: bolder; font-family: 'Rubik', sans-serif;}
+      input[type="submit"]:hover{ color: rgb(73, 22, 112); box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.412); font-weight: bold; font-size: 26px;}
+      .gradient-custom {
+      background: linear-gradient(to right, rgb(73, 46, 172), rgb(163, 25, 205));
+      height: fit-content; width: fit-content; border-radius: 10px;
+      box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.716); 
+      }
 
-        .d {font-family: 'Rubik', sans-serif; color:crimson;}
+      .d {font-family: 'Rubik', sans-serif; color:rgb(255, 206, 70);}
     </style>
-</head>
-<body>
-  <div class="space"></div>
-  <section class="vh-100 gradient-custom">
-    <div class="space"></div>
-    <center><form action="o_signin" method="post">
-        {% csrf_token %}
+  {% endblock %}
 
-        <input type="text" name="username" placeholder="Username" required><br>
-        <input type="password" name="password" placeholder="Password" required><br><br>
-        <input type="Submit" value="Signin">
+  {% block content %}
+    <section class="gradient-custom">
+      <center><form action="o_signin" method="post" style="margin-top: 40px; padding: 40px;">
+          {% csrf_token %}
 
-        <div>
-        {% for message in messages %}
-            <h3>{{message}}</h3>
-        {% endfor %}
-        </div>
+          <input type="text" name="username" placeholder="Username" required><br>
+          <input type="password" name="password" placeholder="Password" required><br><br>
+          <input type="Submit" value="Signin">
 
-        <h3 class="b">Not Registered yet, then<a href="o_signup" class="d">click here</a> to signup</h3>
-        <h3 class="b"><a href="/" class="d">Go back to Homepage</a></h3>
+          <div>
+          {% for message in messages %}
+              <h3>{{message}}</h3>
+          {% endfor %}
+          </div>
 
-    </form></center>
-    <div class="space"></div>
-  </section>
+          <h3 class="b">Not Registered yet, then <a href="o_signup" class="d">click here</a> to signup</h3>
 
-</body>
-</html>
+      </form></center>
+    </section>
+  {% endblock %}

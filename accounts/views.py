@@ -5,7 +5,9 @@ from django.contrib import messages
 
 # Create your views here.
 
-# Donor authentication below
+def authform(request):
+    return render(request, 'authform.html')
+
 
 def signup(request):
     if request.method == 'POST':
@@ -48,7 +50,7 @@ def signin(request):
             U = CustomUser.objects.get(username=username)
             if U.role == 'donor':
                 auth.login(request, customuser)
-                return redirect('/')
+                return redirect('/donor/')
             else:
                 messages.info(request, 'Invalid credentials')
                 return redirect('signin')
