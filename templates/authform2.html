@@ -61,11 +61,11 @@
           }
 
           .d_icon:hover{
-            box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.716); padding: 10px 25px !important;
+            box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.716) !important; padding: 10px 25px !important;
           }
 
           .o_icon:hover{
-            box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.716); padding: 10px 10px !important;
+            box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.716) !important; padding: 10px 10px !important;
           }
           
     </style>
@@ -73,7 +73,7 @@
         <!-- Extra details will be added here -->
     {% endblock %}
   </head>
-  <body>
+  <body background="{% static 'img/authback.jpg' %}">
     <!-- Navigation bar -->
 
     <div class="navbar">
@@ -87,18 +87,20 @@
     <br><br><br><br>
     
     <!-- Main content -->
-    <div class="container px-5 py-4" style="border-radius: 10px; background-color:rgb(55, 41, 125); width: fit-content; height: fit-content;">
+    <div class="container px-5 py-4" style="border-radius: 10px; background-color: rgb(195, 190, 222, 0.79); width: fit-content; height: fit-content;">
         <ul class="d-flex justify-content-center" style="list-style: none;">
-            <li class="mx-3">
-                <div class="px-4 py-2 d_icon" style="border-radius: 10%; background:linear-gradient(to right, rgb(255, 170, 0), rgb(255, 217, 3));">
+            <li class="mx-3" style="margin-right: 75px !important;">
+                <div class="px-4 py-2 d_icon" style="border-radius: 10%; background:linear-gradient(145deg, #f1d310, #c58611); box-shadow: 6px 6px 12px #7a778b,
+             -6px -6px 12px  #c9c3e1;">
                   <a href="signin" style="text-decoration: none;">
                     <img  src="{% static 'img/icons/donor.png' %}" height="50" width="50"><br>
                     <h6 class="mx-1" style="color: black; font-weight: bold;">Donor</h6>
                   </a>
                 </div>
             </li>
-            <li class="mx-5">
-                <div class="px-2 py-2 o_icon" style="border-radius: 10%; background:linear-gradient(to right, rgb(19, 137, 26), rgb(24, 206, 36));">
+            <li class="mx-5" style="margin-left: 75px !important;">
+                <div class="px-2 py-2 o_icon" style="border-radius: 10%; background:linear-gradient(145deg, #18ce24, #13891a); box-shadow:  6px 6px 12px #7a778b,
+                -6px -6px 12px  #c9c3e1;" >
                   <a href="o_signin" style="text-decoration: none;">
                     <img class="mx-3" src="{% static 'img/icons/orphanage.png' %}" height="50" width="50"><br>
                     <h6 style="color: black; font-weight: bold;">Orphanage</h6>
