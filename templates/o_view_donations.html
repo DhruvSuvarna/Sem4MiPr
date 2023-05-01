@@ -2,7 +2,8 @@
 
 {% block content %}
     <center><h3
-    style="background-color:rgb(0, 141, 217); padding: 5px; color: white; width: fit-content;">
+    style="background-color:rgb(0, 141, 217); padding: 5px; color: white; 
+    width: fit-content; border-radius: 5px;">
     View Donations
     </h3></center>
     
@@ -25,7 +26,14 @@
                     <div class="mx-3 my-3">
 
                     <div class="mb-3">
-                        <h3>Donor {{u_donation.donorname}} donated to you</h3>
+                        {% for donorprofile in donorprofiles %}
+                            {% if donorprofile.username == u_donation.donorname %}
+                                <h3>Donor {{u_donation.donorname}}
+                                    <img src="{{donorprofile.profile_pic.url}}" height="100" width="100" 
+                                    style="border-radius: 50%;">
+                                donated to you</h3>
+                            {% endif %} 
+                        {% endfor %}
                     </div>
 
                     <center><div class="mb-3">
@@ -42,28 +50,38 @@
                 </div>
                 {% endfor %}
                 <h3 class="text-center mt-3">total money received = {{total}}</h3>
+            {% endif %}
                 
 
-            {%elif servicedonations %}
-            <h3 class="text-center mt-3">ServiceDonations</h3>
+            {%if servicedonations %}
+            <h3 class="text-center mt-3" style="text-decoration: underline">ServiceDonations</h3>
                 {% for s_donation in servicedonations %}
                 <div style="border: 2px solid rgb(11, 172, 86); border-radius: 2vh; background-color:rgb(243, 243, 243);">
                     <div class="mx-3 my-3">
 
                     <div class="mb-3">
-                        <h3>Donor{{s_donation.donorname}} wishes to donate {{s_donation.service}} to you</h3>
+                        {% for donorprofile in donorprofiles %}
+                          {% if donorprofile.username == s_donation.donorname %}
+                            <h3>Donor {{s_donation.donorname}} 
+                            <img src="{{donorprofile.profile_pic.url}}" height="100" width="100" 
+                                style="border-radius: 50%;">
+                            wishes to donate '{{s_donation.service}}' service to you</h3>
+                          {% endif %} 
+                        {% endfor %}
                     </div>
 
                     <center><div class="mb-3">
-                        <h3>You can contact {{s_donation.donorname}} on phone number {{s_donation.mobile}}</h3>
+                        <h3>You can contact {{s_donation.donorname}} on phone number</h3>
+                        <h2>{{s_donation.mobile}}</h2>
                     </div></center>
 
                     </div>
                 </div>
                 {% endfor %}
+            {% endif %}
                 
             
-            {% else %}
+            {% if not utilitydonations and not servicedonations %}
                 <div style="border: 2px solid rgb(11, 172, 86); border-radius: 2vh; background-color:rgb(243, 243, 243);">
                     <div class="mx-3 my-3">
                         <div>

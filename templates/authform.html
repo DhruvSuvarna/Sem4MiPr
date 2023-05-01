@@ -89,7 +89,7 @@
     <div class="container px-5 py-4" style="border-radius: 10px; background-color: rgba(195, 190, 222, 0.79); width: fit-content; height: fit-content;">
         <ul class="d-flex justify-content-center" style="list-style: none;">
             <li class="mx-3" style="margin-right: 75px !important;">
-                <div class="px-4 py-2 d_icon" style="border-radius: 10%; background:linear-gradient(145deg, #f1d310, #c58611); box-shadow: 6px 6px 12px #7a778b,
+                <div id="donor" class="px-4 py-2 d_icon" style="border-radius: 10%; background:linear-gradient(145deg, #f1d310, #c58611); box-shadow: 6px 6px 12px #7a778b,
                 -6px -6px 12px #c9c3e1;">
                   <a href="signup" style="text-decoration: none;">
                     <img  src="{% static 'img/icons/donor.png' %}" height="50" width="50"><br>
@@ -98,7 +98,7 @@
                 </div>
             </li>
             <li class="mx-5" style="margin-left: 75px !important;">
-                <div class="px-2 py-2 o_icon" style="border-radius: 10%; background:linear-gradient(145deg, #18ce24, #13891a); box-shadow: 6px 6px 12px #7a778b,
+                <div id="orphanage" class="px-2 py-2 o_icon" style="border-radius: 10%; background:linear-gradient(145deg, #18ce24, #13891a); box-shadow: 6px 6px 12px #7a778b,
                 -6px -6px 12px #c9c3e1;">
                   <a href="o_signup" style="text-decoration: none;">
                     <img class="mx-3" src="{% static 'img/icons/orphanage.png' %}" height="50" width="50"><br>
@@ -111,8 +111,21 @@
             <!-- Extra details will be added here -->
         {% endblock %}
     </div>
-        
-    
+
+    <script>
+      // get the current page URL
+      const currentPageUrl = window.location.href;
+      const check = currentPageUrl.includes("o_");
+      if (check) {
+        console.log(currentPageUrl)
+        document.getElementById('orphanage').style="border-radius: 10%; background:linear-gradient(145deg,  #ffffff, #9d9d9d); box-shadow: 6px 6px 12px #7a778b,-6px -6px 12px #c9c3e1;";
+        document.getElementById('donor').style="border-radius: 10%; background:linear-gradient(145deg, #f1d310, #c58611); box-shadow: 6px 6px 12px #7a778b,-6px -6px 12px #c9c3e1;";
+      }
+      else{
+        document.getElementById('donor').style="border-radius: 10%; background:linear-gradient(145deg,  #ffffff, #9d9d9d); box-shadow: 6px 6px 12px #7a778b,-6px -6px 12px #c9c3e1;";
+        document.getElementById('orphanage').style="border-radius: 10%; background:linear-gradient(145deg, #18ce24, #13891a); box-shadow: 6px 6px 12px #7a778b,-6px -6px 12px #c9c3e1;";
+      }
+    </script>
 
     <!-- Include Bootstrap JS -->
     <script

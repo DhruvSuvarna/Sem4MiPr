@@ -70,7 +70,7 @@
         <div class="ul">
           <a id="a" href="/">Back to Homepage</a>
           {% if user.is_authenticated and user.role == 'donor' %}
-          <a href="../accounts/o_signout" id="o_signout">Signout</a>
+          <a href="../accounts/signout" id="signout">Signout</a>
           {% endif %}
         </div>
     </div>
@@ -78,59 +78,59 @@
     <br><br><br><br>
     
     <!-- Main content -->
-    <div class="container mt-5">
-      <h1 class="text-center">Welcome to Donor Dashboard</h1>
-      <p class="text-center">
-        We provide a platform for donors to manage their details and
-        donations.
-      </p>
-      <div class="row mt-5">
-        <div class="col-md-4">
-          <div class="card" style="background: linear-gradient(to left,rgb(255, 179, 0), rgb(255, 217, 0));">
-            <div class="card-body">
-              <h5 class="card-title"><b>Add Your Details</b></h5>
-              <p class="card-text">
-                Add your orphanage name, location, images and events organized
-                by you.
-              </p>
-              <a href="#" class="btn btn-light">Add Details</a>
-            </div>
+
+    <div class="d-flex container">
+      <div class="container" style="flex-basis: 50%;">
+        <h1 style="margin-left: 14vw;">Your Profile</h1>
+        <div class="profile-bg" style="background-color:rgb(214, 214, 214); padding: 20px; width: fit-content; border-radius: 10%; margin-left: 10vw;">
+          {% if profilepic %}
+          <img src="{{profilepic}}" alt="Profile Image" height="300" width="300" style="border-radius: 50%;">
+          {%else %}
+          <img src="{% static 'img/donors/dummydonor.jpg' %}" alt="Profile Image" height="300" width="300" style="border-radius: 50%;">
+          {% endif %}
+        </div>
+      </div>
+  
+      <div class="container" style="flex-basis: 50%;">
+        <div class="card" style="background: linear-gradient(to left,rgb(255, 179, 0), rgb(255, 217, 0)); margin-top: 8vh; margin-right: 8vw;">
+          <div class="card-body">
+            <h5 class="card-title"><b>Add Your Details</b></h5>
+            <p class="card-text">
+              Add your orphanage name, location, images and events organized by you.
+            </p>
+            <a href="add_profile" class="btn btn-light">Add Details</a>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="card" style="background: linear-gradient(to left,rgb(0, 145, 255), rgb(0, 195, 255));">
-            <div class="card-body">
-              <h5 class="card-title"><b>Donate</b></h5>
-              <p class="card-text">
-                View donations received by your orphanage and the total amount
-                earned.
-              </p>
-              <a href="/donation" class="btn btn-light">Donate</a>
-            </div>
+      
+        <div class="card mt-5" style="background: linear-gradient(to left,rgb(0, 145, 255), rgb(0, 195, 255)); margin-right: 8vw;">
+          <div class="card-body">
+            <h5 class="card-title"><b>Donate</b></h5>
+            <p class="card-text">
+              View donations received by your orphanage and the total amount earned.
+            </p>
+            <a href="/donation" class="btn btn-light">Donate</a>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="card" style="background: linear-gradient(to left, rgb(0, 202, 94), rgb(0, 236, 110));">
-            <div class="card-body">
-              <h5 class="card-title"><b>Your Donations</b></h5>
-              <p class="card-text">
-                View the details of your orphanage that you have added.
-              </p>
-              <a href="#" class="btn btn-light">Your Donations</a>
-            </div>
+  
+        <div class="card mt-5" style="background: linear-gradient(to left, rgb(0, 202, 94), rgb(0, 236, 110)); margin-right: 8vw;">
+          <div class="card-body">
+            <h5 class="card-title"><b>Your Donations</b></h5>
+            <p class="card-text">
+              View the details of your orphanage that you have added.
+            </p>
+            <a href="#" class="btn btn-light">Your Donations</a>
           </div>
         </div>
       </div>
     </div>
-
+     
     <br><br><br>
 
-    <div class="container px-5">
+    <div id="main-content" class="container px-5">
         {% block content %}
             <!-- Extra details will be added here -->
         {% endblock %}
     </div>
-    
 
     <!-- Include Bootstrap JS -->
     <script

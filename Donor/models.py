@@ -1,7 +1,6 @@
 from django.db import models
 
 # Create your models here.
-
 class UtilityDonation(models.Model):
     
     donorname = models.CharField(max_length=150, default='rajat')
@@ -20,3 +19,11 @@ class ServiceDonation(models.Model):
     orphanagename = models.TextField()
     service =  models.CharField(max_length=150)
     mobile = models.BigIntegerField()
+
+class DonorProfile(models.Model):
+    
+    username = models.CharField(max_length=150, unique=True, default='rajat')
+    name = models.CharField(max_length=150, default='rajat')
+    profile_pic =  models.ImageField(upload_to='pics')
+    mobile = models.BigIntegerField()
+    location = models.CharField(max_length=150)

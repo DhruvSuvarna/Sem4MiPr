@@ -3,5 +3,5 @@ from django.urls import path
 
 urlpatterns = [
     path('', views.donor, name='donor'),
-    path('thankyou', views.thankyou, name='thankyou')
+    path('add_profile', views.add_profile, name='add_profile')
 ]

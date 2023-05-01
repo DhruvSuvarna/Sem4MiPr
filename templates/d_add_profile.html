@@ -1,0 +1,50 @@
+{% extends 'donor.html' %}
+
+{% block content %}
+{% if specialCheck %}
+<div style="border: 2px solid rgb(11, 172, 86); border-radius: 2vh; background-color:rgb(243, 243, 243);">
+    <h3 class="mx-3 my-3" style="color:rgb(37, 37, 83);">You have already added your profile details</h3>
+</div>
+{% else %}
+<form action="add_profile" method="post" enctype="multipart/form-data" style="border: 2px solid rgb(11, 172, 86); border-radius: 2vh; background-color:rgb(243, 243, 243);">
+    {% csrf_token %}
+        <div class="mx-3 my-3">
+            <!--Profile pic goes here-->
+            <div class="mb-3">
+                <label for="profile_pic" class="form-label">Profile pic:</label>
+                <input class="form-control" name="profile_pic" type="file" id="profile_pic" required>
+            </div>
+            <!--Mobile goes here-->
+            <div class="mb-3">
+                <label for="mobile" class="form-label">Mobile:</label>
+                <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" required>
+            </div>
+            <!--Location goes here-->
+            <div class="mb-3">
+                <label for="location" class="form-label">Location(district, city, state):</label>
+                <textarea class="form-control" name="location" id="location" placeholder="Enter your location here" rows="3" required></textarea>
+            </div>
+
+            <!--Submit Button-->
+            <div class="mb-3">
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </div>
+        </div> 
+</form>
+{% endif %}
+
+<br><br><br><br>
+
+<script>
+    window.onload = function() {
+        var target = "{{ scroll_target }}";
+        if (target) {
+            var element = document.getElementById(target);
+            if (element) {
+                element.scrollIntoView();
+            }
+        }
+    };
+  </script>
+
+{% endblock %}

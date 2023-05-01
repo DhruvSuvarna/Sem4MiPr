@@ -45,8 +45,8 @@ INSTALLED_APPS = [
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
-ORPHANAGE_LOGIN_URL = '/accounts/o_signin'
 DONOR_LOGIN_URL = '/accounts/signin'
+ORPHANAGE_LOGIN_URL = '/accounts/o_signin'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

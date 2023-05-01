@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Orphanage_Details
 from Orph.models import Orphanage_Display
-from Donor.models import UtilityDonation, ServiceDonation
+from Donor.models import UtilityDonation, ServiceDonation, DonorProfile
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
@@ -18,19 +18,18 @@ def view_donations(request):
     if UtilityDonation.objects.filter(orphanageusername= username).exists() or ServiceDonation.objects.filter(orphanageusername= username).exists():
         utilitydonations = UtilityDonation.objects.filter(orphanageusername= username)
         servicedonations = ServiceDonation.objects.filter(orphanageusername= username)
+        donorprofiles = DonorProfile.objects.all()
         check = 1
         total = 0
         for u_donation in utilitydonations:
             total += u_donation.money
-        return render(request, 'o_view_donations.html', {'utilitydonations': utilitydonations, 'total': total, 'servicedonations': servicedonations, 'check': check, 'scroll_target': '#main-content'})
-        #return render(request, 'o_view_details.html', {'details': details, 'check': check, 'scroll_target': '#main-content'})
-    
+        return render(request, 'o_view_donations.html', {'donorprofiles': donorprofiles,'utilitydonations': utilitydonations, 'total': total, 'servicedonations': servicedonations, 'check': check, 'scroll_target': '#main-content'})
+        
     else:
         nodonations = "You haven't received any donations yet"
         check = 0
         return render(request, 'o_view_donations.html', {'nodonations': nodonations, 'check': check, 'scroll_target': '#main-content'})
-        #return render(request, 'o_view_details.html', {'nodetails': nodetails, 'check': check, 'scroll_target': '#main-content'})
-    
+        
 
 @login_required(login_url=settings.ORPHANAGE_LOGIN_URL)
 def add_details(request):

@@ -11,9 +11,8 @@ def home(request):
     if request.method == 'POST':
         district = request.POST['search']
         district = district.title()
-        print(district)
-        orphs = Orphanage_Display.objects.filter(location__startswith=district)
-        return render(request,'index.html', {'orphs':orphs, 'scroll_target': '#ao'} )
+        orphs = Orphanage_Display.objects.filter(location__contains=district)
+        return render(request,'index.html', {'orphs':orphs, 'scroll_target': 'ao'} )
     
     orphs = Orphanage_Display.objects.all()
     return render(request,'index.html', {'orphs':orphs})
