@@ -1,9 +1,91 @@
 {% extends 'orphanage.html' %}
 
 {% block content %}
-    <div>
-    {% for donation in donations %}
-        <h3>{{donation}}</h3>
-    {% endfor %}
-    </div>
+    <center><h3
+    style="background-color:rgb(0, 141, 217); padding: 5px; color: white; width: fit-content;">
+    View Donations
+    </h3></center>
+    
+        {% if check == 0 %}
+        <div style="border: 2px solid rgb(11, 172, 86); border-radius: 2vh; background-color:rgb(243, 243, 243);">
+            <div class="mx-3 my-3">
+                <div>
+                    <h3>{{nodonations}}</h3>
+                </div>
+            </div>   
+        </div>
+
+        {% else %}
+            {%if utilitydonations %}
+            <h3 class="text-center mt-3" style="text-decoration: underline">Utility Donations</h3>
+                {% for u_donation in utilitydonations %}
+                <div class="mt-3" 
+                style="border: 2px solid rgb(11, 172, 86); border-radius: 2vh; 
+                background-color:rgb(243, 243, 243);">
+                    <div class="mx-3 my-3">
+
+                    <div class="mb-3">
+                        <h3>Donor {{u_donation.donorname}} donated to you</h3>
+                    </div>
+
+                    <center><div class="mb-3">
+                        <h3>₹ {{u_donation.money}}</h3>
+                        <h3>{{u_donation.grains_no}}kg {{u_donation.grains}}</h3>
+                        {% if u_donation.books_no > 1 %}
+                        <h3>{{u_donation.books_no}} {{u_donation.books}}s</h3>
+                        {% else %}
+                        <h3>{{u_donation.books_no}} {{u_donation.books}}</h3>
+                        {% endif %}
+                    </div></center>
+
+                    </div>
+                </div>
+                {% endfor %}
+                <h3 class="text-center mt-3">total money received = {{total}}</h3>
+                
+
+            {%elif servicedonations %}
+            <h3 class="text-center mt-3">ServiceDonations</h3>
+                {% for s_donation in servicedonations %}
+                <div style="border: 2px solid rgb(11, 172, 86); border-radius: 2vh; background-color:rgb(243, 243, 243);">
+                    <div class="mx-3 my-3">
+
+                    <div class="mb-3">
+                        <h3>Donor{{s_donation.donorname}} wishes to donate {{s_donation.service}} to you</h3>
+                    </div>
+
+                    <center><div class="mb-3">
+                        <h3>You can contact {{s_donation.donorname}} on phone number {{s_donation.mobile}}</h3>
+                    </div></center>
+
+                    </div>
+                </div>
+                {% endfor %}
+                
+            
+            {% else %}
+                <div style="border: 2px solid rgb(11, 172, 86); border-radius: 2vh; background-color:rgb(243, 243, 243);">
+                    <div class="mx-3 my-3">
+                        <div>
+                            <h3>{{nodonations}}</h3>
+                        </div>
+                    </div>   
+                </div>
+            
+            {% endif %}
+        {% endif %}    
+        
+    <br><br><br><br><br>    
+
+    <script>
+        window.onload = function() {
+            var target = "{{ scroll_target }}";
+            if (target) {
+                var element = document.getElementById(target);
+                if (element) {
+                    element.scrollIntoView();
+                }
+            }
+        };
+    </script>
 {% endblock %}

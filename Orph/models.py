@@ -1,6 +1,4 @@
-import uuid
 from django.db import models
-from Orphanage.models import Orphanage_Details
 # Create your models here.
 class Orphanage_Display(models.Model):
     

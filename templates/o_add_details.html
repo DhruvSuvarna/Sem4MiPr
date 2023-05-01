@@ -59,8 +59,10 @@
                         <option>Jogeshwari</option>
                         <option>Andheri</option>
                         <option>Vile Parle</option>
+                        <option>Pune-District</option>
                         <option>Santacruz</option>
                         <option>Charni Road</option>
+                        <option>Dadar</option>
                         <option>Churchgate</option>
                     </select>
                 </div>
@@ -89,4 +91,16 @@
     {% endif %}
 </div>
 <br><br><br><br><br>
+
+<script>
+    window.onload = function() {
+        var target = "{{ scroll_target }}";
+        if (target) {
+            var element = document.getElementById(target);
+            if (element) {
+                element.scrollIntoView();
+            }
+        }
+    };
+</script>
 {% endblock %}

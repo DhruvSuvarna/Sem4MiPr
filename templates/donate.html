@@ -4,66 +4,186 @@
 
   {% load static %}
 
-    <center>
-      <h1 id="donation"
-        style="margin-top: 90px;
-          color: rgb(83, 106, 255);
-          font-family: 'Rubik', sans serif; margin-bottom: 2vh;">
-        Donate
-      </h1>
-    </center>
-  
-      <div class="donation-container">
-        <h2>Select a donation category:</h2>
-        <select id="donation-category">
-          <option value="">-- Select Category --</option>
-          <option value="utilities">Utilities</option>
-          <option value="services">Services</option>
-        </select>
-      
-        <div id="utilities-form" class="donation-form hidden">
-          <h2>Utilities Donation</h2>
-          <form id="utilities-donation-form">
-            <div class="donation-item">
-              <label for="money-donation">Money Donation (in Rupees):</label>
-              <input type="number" id="money-donation" name="money-donation">
-            </div>
-            <div class="donation-item">
-              <label for="grain-donation">Grain Donation:</label>
-              <select id="grain-donation" name="grain-donation">
-                <option value="">-- Select Grain Type --</option>
-                <option value="rice">Rice (Rs. 50/kg)</option>
-                <option value="wheat">Wheat (Rs. 40/kg)</option>
-                <option value="corn">Corn (Rs. 30/kg)</option>
-              </select>
-              <input type="number" id="grain-donation-quantity" name="grain-donation-quantity">
-            </div>
-            <div class="donation-item">
-              <label for="book-donation">Book Donation:</label>
-              <select id="book-donation" name="book-donation">
-                <option value="">-- Select Book Type --</option>
-                <option value="textbook">Textbook (Rs. 200)</option>
-                <option value="novel">Novel (Rs. 150)</option>
-                <option value="comic">Comic (Rs. 50)</option>
-              </select>
-              <input type="number" id="book-donation-quantity" name="book-donation-quantity">
-            </div>
-            <button type="submit">Add to Cart</button>
-          </form>
-        </div>
-      
-        <div id="cart" class="hidden">
-          <h2>Cart</h2>
-          <ul id="cart-items">
-            <!-- Cart items will be added dynamically -->
-          </ul>
-          <div id="cart-total">Total: Rs. 0</div>
-          
-        </div>
+  {% if message %}
+    {%if message == "Utility Donated" %}
+      <br><br><br><br>
+      <!-- Main content -->
+      <center><h1 class="text-center">We Thank you ❤️ for your Donation</h1></center>
+      <div class="container mt-3">
+          <div style="border: 2px solid rgb(11, 172, 86); border-radius: 2vh; background-color:rgb(243, 243, 243); width: 75vw;">    
+            <h3 class="text-center mt-3">You Donated</h3>
+                <center><div class="mx-3 my-3">
+                    <h4>₹ {{utdonation.money}}</h4>
+                    <h4>{{utdonation.grains_no}} kg of {{utdonation.grains}}</h4>
+                    <h4>{{utdonation.books_no}} {{utdonation.books}}</h4>
+                </div></center>
+            <h3 class="text-center">To</h3>
+                <center><div class="mx-3 my-3">
+                  <h4>{{utdonation.orphanagename}}</h4>
+                  <img style="border-radius: 5px;" src="{{img}}" height="200" width="200">
+                </div></center>
+          </div>
+        <br><br><br><br><br>
       </div>
-      
+    {% elif message == "Service Donated" %}
+      <br><br><br><br>
+      <!-- Main content -->
+      <center><h1 class="text-center">We Thank you ❤️ for your Donation</h1></center>
+      <div class="container mt-3">
+          <div style="border: 2px solid rgb(11, 172, 86); border-radius: 2vh; background-color:rgb(243, 243, 243); width: 75vw;">    
+            <h3 class="text-center mt-3">You will be Donating the following Service</h3>
+                <center><div class="mx-3 my-3">
+                    <b><h4>{{svdonation.service}}</h4></b>
+                </div></center>
+            <h3 class="text-center">To</h3>
+                <center><div class="mx-3 my-3">
+                  <b><h4>{{svdonation.orphanagename}}</h4></b>
+                  <img style="border-radius: 5px;" src="{{img}}" height="200" width="200">
+                </div></center>
+            <h3 class="text-center">You will be contacted by {{svdonation.orphanagename}} on below number</h3>
+                <center><div class="mx-3 my-3">
+                  <b><h4>{{svdonation.mobile}}</h4></b>
+                </div></center>
+          </div>
+        <br><br><br><br><br>
+      </div>
+    {% endif %}
+  {% else %}
+  <center>
+    <h1 id="donation"
+      style="margin-top: 90px;
+        color: rgb(83, 106, 255);
+        font-family: 'Rubik', sans serif; margin-bottom: 2vh;">
+      Donate
+    </h1>
+  </center>
+  <center><h2 style="color: green;">{{message}}</h2></center>
+  <div class="donation-container mb-5">
+    <!--Select Orphanage-->
+    <form>
+      <div class="form-group mb-2">
+        <h2 for="orphanage-select">Select an Orphanage:</h2>
+        <select class="form-control" id="orphanage-select" name="orphanage" required>
+        <option value="">-- Select Orphanage --</option>
+          {% for orph in orphs %}
+            <option data-img="{{orph.img.url}}" value="{{orph.id}}">{{ orph.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </form>
+
+    <!--Select Donation Category-->
+    <h2>Select a donation category:</h2>
+    <select id="donation-category">
+      <option value="">-- Select Category --</option>
+      <option value="utilities">Utilities</option>
+      <option value="services">Services</option>
+    </select>
+  
+    <!--Utility Form-->
+    <div id="utilities-form" class="donation-form hidden">
+      <h2>Donate Utilities</h2>
+      <form id="utilities-donation-form">
+        <div class="donation-item">
+          <label for="money-donation">Money Donation (in Rupees):</label>
+          <input type="number" id="money-donation" name="money-donation" min="0" required>
+        </div>
+        <div class="donation-item">
+          <label for="grain-donation">Grain Donation:</label>
+          <select id="grain-donation" name="grain-donation">
+            <option value="">-- Select Grain Type --</option>
+            <option value="rice">Rice (kg)</option>
+            <option value="wheat">Wheat (kg)</option>
+            <option value="corn">Corn (kg)</option>
+          </select>
+          <input type="number" id="grain-donation-quantity" name="grain-donation-quantity" step="0.5" min="0" required>
+        </div>
+        <div class="donation-item">
+          <label for="book-donation">Book Donation:</label>
+          <select id="book-donation" name="book-donation">
+            <option value="">-- Select Book Type --</option>
+            <option value="textbook">Textbook</option>
+            <option value="novel">Novel</option>
+            <option value="comic">Comic</option>
+          </select>
+          <input type="number" id="book-donation-quantity" name="book-donation-quantity" min="0" required>
+        </div>
+        <button type="submit">Donate</button>
+      </form>
     </div>
+    <!--Utility Form Ends-->
+
+    <!--Services Form-->
+    <div id="services-form" class="donation-form hidden">
+      <h2>Donate Services</h2>
+      <form id="services-donation-form">
+        <div class="donation-item">
+          <label for="service">Service:</label>
+          <select name="service" id="service" style="width: 50vw;" required>
+            <option value="">-- Select Type of Service --</option>
+            <option value="Tutoring">Tutoring</option>
+            <option value="Healthcare Services">Healthcare Services</option>
+            <option value="Career Guidance">Career Guidance</option>
+          </select>
+        </div>
+
+        <div class="donation-item">
+          <label for="mobile">Your Phone number <br> 
+            (You will be contacted by the orphanage through this number):</label>
+          <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" required>
+        </div>
+        
+        <button type="submit">Donate</button>
+      </form>
+    </div>
+    <!--Services Form Ends-->
+  
+    <!--Cart displaying donation contents and button for confirmation-->
+    <div id="cart" class="hidden">
+      <h2>Your Donation</h2>
+      <ul id="cart-items">
+        <!-- Cart items will be added dynamically -->
+      </ul>
+      <div id="cart-total">Total: Rs. 0</div>
+
+      <form id="SubmitUtilityDonation" method="post" action="donation" style="display:none;">
+        {% csrf_token %}
+        <input type="hidden" id="form_id" name="form_id" value="SubmitUtilityDonation">
+        <input type="text" id="donorname" name="donorname">
+        <input type="text" id="orphanagename" name="orphanagename">
+        <input type="number" id="money" name="money">
+        <input type="number" id="grains_no" name="grains_no">
+        <input type="text" id="grains" name="grains">
+        <input type="number" id="books_no" name="books_no">
+        <input type="text" id="books" name="books">
+      </form>
+
+      <form id="SubmitServiceDonation" method="post" action="donation" style="display:none;">
+        {% csrf_token %}
+        <input type="hidden" id="form_id" name="form_id" value="SubmitServiceDonation">
+        <input type="text" id="donorname2" name="donorname2">
+        <input type="text" id="orphanagename2" name="orphanagename2">
+        <input type="text" id="service2" name="service2">
+        <input type="tel" id="mobile2" name="mobile2" pattern="[0-9]{10}" required>
+      </form>
+
+      <div id="confirm-donation" style="margin-top: 10px;
+      padding: 5px 10px; height: fit-content; width: fit-content;
+      background-color: #4CAF50; color: #fff; border: none; border-radius: 3px;
+      cursor: pointer;" onMouseOver="this.style.backgroundColor='#3e8e41'"
+      onMouseOut="this.style.backgroundColor='#4CAF50'">Confirm Donation</div>
+    </div>
+
+  </div>
+
+  <script>
+    var loggedInUser = "{{ request.user.username }}";
+  </script>
+
+  
+  <script src="{% static 'js/donate.js' %}"></script> 
+  {% endif %}
+
     
-    <script src="{% static 'js/donate.js' %}"></script> 
 
   {% endblock %}

@@ -3,8 +3,6 @@
 {% block content %}
     <div style="border: 2px solid rgb(11, 172, 86); border-radius: 2vh; background-color:rgb(243, 243, 243);">    
         <h3 class="text-center">View Orphanage Details</h3>
-        <!-- <form action="add_details" method="post" style="border: 2px solid rgb(11, 172, 86); border-radius: 2vh; background-color:rgb(243, 243, 243);"> -->
-        {% csrf_token %}
             <div class="mx-3 my-3">
                 
                 {% if check == 0 %}
@@ -46,4 +44,16 @@
             </div>
     </div>
     <br><br><br><br><br>
+
+    <script>
+        window.onload = function() {
+            var target = "{{ scroll_target }}";
+            if (target) {
+                var element = document.getElementById(target);
+                if (element) {
+                    element.scrollIntoView();
+                }
+            }
+        };
+    </script>
 {% endblock %}

@@ -7,3 +7,6 @@ from django.conf import settings
 @login_required(login_url=settings.DONOR_LOGIN_URL)
 def donor(request):
     return render(request, 'donor.html')
+
+def thankyou(request):
+    return render(request, 'ThankYou.html')
