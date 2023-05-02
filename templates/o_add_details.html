@@ -85,9 +85,83 @@
             
         </form>
     {% else %}
-        <div style="border: 2px solid rgb(11, 172, 86); border-radius: 2vh; background-color:rgb(243, 243, 243);">
+        <!-- <div style="border: 2px solid rgb(11, 172, 86); border-radius: 2vh; background-color:rgb(243, 243, 243);">
             <h3 class="mx-3 my-3" style="color:rgb(37, 37, 83);">You have already added your details</h3>
-        </div>
+        </div> -->
+        <form action="add_details" method="post" enctype="multipart/form-data" style="border: 2px solid rgb(11, 172, 86); border-radius: 2vh; background-color:rgb(243, 243, 243);">
+            {% csrf_token %}
+                <div class="mx-3 my-3">
+                    <!--Name of Orphanage goes here-->
+                    <div class="mb-3">
+                        <label for="defaultInputExample" class="form-label">Name of Orphanage:</label>
+                        <input class="form-control" type="text" name="o_name" placeholder="Enter name of your orphanage" id="defaultInputExample" required>
+                    </div>
+                    <!--Image goes here-->
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Image:</label>
+                        <input class="form-control" name="o_img" type="file" id="formFile" required>
+                    </div>
+                    <!--State goes here-->
+                    <div class="mb-3">
+                        <label for="validationDefault04" class="form-label">State:</label>
+                        <select class="form-select" name="o_state" id="validationDefault04" required>
+                            <option selected disabled value="">Choose State</option>
+                            <option>Maharashtra</option>
+                        </select>
+                    </div>
+                    <!--City goes here-->
+                    <div class="mb-3">
+                        <label for="validationDefault04" class="form-label">City:</label>
+                        <select class="form-select" name="o_city" id="validationDefault04" required>
+                            <option selected disabled value="">Choose City</option>
+                            <option>Mumbai</option>
+                            <option>Pune</option>
+                            <option>Thane</option>
+                        </select>
+                    </div>
+                    <!--District goes here-->
+                    <div class="mb-3">
+                        <label for="validationDefault04" class="form-label">District:</label>
+                        <select class="form-select" name="o_district" id="validationDefault04">
+                            <option selected disabled value="">Choose District</option>
+                            <option>Vasai</option>
+                            <option>Bhayandar</option>
+                            <option>Mira Bhayandar</option>
+                            <option>MiraRoad</option>
+                            <option>Dahisar</option>
+                            <option>Borivali</option>
+                            <option>Kandivali</option>
+                            <option>Goregaon</option>
+                            <option>Malad</option>
+                            <option>Ram Mandir</option>
+                            <option>Jogeshwari</option>
+                            <option>Andheri</option>
+                            <option>Vile Parle</option>
+                            <option>Pune-District</option>
+                            <option>Santacruz</option>
+                            <option>Charni Road</option>
+                            <option>Dadar</option>
+                            <option>Churchgate</option>
+                        </select>
+                    </div>
+                    <!--Address goes here-->
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Address:</label>
+                        <textarea class="form-control" name="o_address" id="exampleFormControlTextarea1" placeholder="Enter your address here" rows="3" required></textarea>
+                    </div>
+                    <!--Weblink goes here-->
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Weblink:</label>
+                        <textarea class="form-control" name="o_weblink" id="exampleFormControlTextarea1" placeholder="Enter your weblink here" rows="3" required></textarea>
+                    </div>
+        
+                    <!--Submit Button-->
+                    <div class="mb-3">
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                    </div>
+                </div>
+                
+        </form>
     {% endif %}
 </div>
 <br><br><br><br><br>

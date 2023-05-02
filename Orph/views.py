@@ -1,9 +1,11 @@
-from django.shortcuts import render
-from .models import Orphanage_Display
+from django.shortcuts import render, redirect
+from .models import Orphanage_Display, Suggestions
 from Donor.models import UtilityDonation, ServiceDonation
 from Orphanage.models import Orphanage_Details
 from django.conf import settings
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+# from django.core.mail import send_mail
 
 # Create your views here.
 
@@ -17,13 +19,29 @@ def home(request):
     orphs = Orphanage_Display.objects.all()
     return render(request,'index.html', {'orphs':orphs})
 
-@login_required(login_url=settings.DONOR_LOGIN_URL)
 def about(request):
-
     return render(request,'about.html')
 
 @login_required(login_url=settings.DONOR_LOGIN_URL)
 def suggestion(request):
+    username = request.user.username
+    role = request.user.role
+    if request.method == 'POST':
+        name = request.POST['name']
+        email = request.POST['email']
+        suggestion = request.POST['suggestion']
+
+        suggestionobject = Suggestions.objects.create(username= username, role= role, name= name, email= email, suggestion= suggestion)
+        suggestionobject.save()
+        messages.info(request, "We thank you for your suggestion")
+
+        # subject = 'OrphaConnect'
+        # message = 'We thank you for your suggestion. It has been recorded by us'
+        # from_email = 'dhruvsuvarna2019@gmail.com'
+        # recipient_list = [email]
+
+        # send_mail(subject, message, from_email, recipient_list)
+        return redirect('suggestion')
 
     return render(request,'suggestion.html')
 

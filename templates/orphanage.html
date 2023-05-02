@@ -81,6 +81,9 @@ section{
 }
 
 </style>
+{% block style %}
+
+{% endblock %}
   
 </head>
   
@@ -118,12 +121,11 @@ section{
         <div class="col-md-4">
           <div class="card" style="background: linear-gradient(to left,rgb(255, 179, 0), rgb(255, 217, 0));">
             <div class="card-body">
-              <h5 class="card-title"><b>Add Orphanage Details</b></h5>
-              <p class="card-text">
-                Add your orphanage name, location, images and events organized
-                by you.
+              <h5 class="card-title"><b id="edit1">Add Orphanage Details</b></h5>
+              <p id="edit2" class="card-text">
+                Add your orphanage name, location and images so that they can be displayed on home page.
               </p>
-              <a href="add_details" class="btn btn-light">Add Details</a>
+              <a href="add_details" id='edit3' class="btn btn-light">Add Details</a>
             </div>
           </div>
         </div>
@@ -171,6 +173,26 @@ section{
         {% endblock %}
     </div>
     
+    <script>
+      window.onload = function() {
+        var target = "{{ scroll_target }}";
+        if (target) {
+            var element = document.getElementById(target);
+            if (element) {
+                element.scrollIntoView();
+            }
+        }
+      };
+        var edit = '{{specialCheck}}';
+        if(edit){
+            var h1 = document.getElementById('edit1');
+            var p = document.getElementById('edit2');
+            var b = document.getElementById('edit3');
+            h1.textContent = 'Edit Orphanage Details';
+            p.textContent = 'Edit your orphanage name, location and images so that they can be displayed on home page';
+            b.textContent = 'Edit Details';
+        }
+    </script>
 
     <!-- Include Bootstrap JS -->
     <script

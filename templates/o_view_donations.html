@@ -28,10 +28,10 @@
                     <div class="mb-3">
                         {% for donorprofile in donorprofiles %}
                             {% if donorprofile.username == u_donation.donorname %}
-                                <h3>Donor {{u_donation.donorname}}
+                                <center><h3>Donor {{u_donation.donorname}}
                                     <img src="{{donorprofile.profile_pic.url}}" height="100" width="100" 
                                     style="border-radius: 50%;">
-                                donated to you</h3>
+                                donated to you</h3></center>
                             {% endif %} 
                         {% endfor %}
                     </div>
@@ -62,10 +62,10 @@
                     <div class="mb-3">
                         {% for donorprofile in donorprofiles %}
                           {% if donorprofile.username == s_donation.donorname %}
-                            <h3>Donor {{s_donation.donorname}} 
+                            <center><h3>Donor {{s_donation.donorname}} 
                             <img src="{{donorprofile.profile_pic.url}}" height="100" width="100" 
                                 style="border-radius: 50%;">
-                            wishes to donate '{{s_donation.service}}' service to you</h3>
+                            wishes to donate '{{s_donation.service}}' service to you</h3></center>
                           {% endif %} 
                         {% endfor %}
                     </div>

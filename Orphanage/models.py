@@ -13,3 +13,13 @@ class Orphanage_Details(models.Model):
     o_district =  models.CharField(max_length=100)
     o_address = models.TextField()
     o_weblink = models.TextField()
+
+class Orphanage_Events(models.Model):
+    
+    username = models.CharField(max_length=150)
+    o_name =  models.CharField(max_length=150)
+    e_name = models.CharField(max_length=150)
+    e_desc = models.TextField(default='null')
+    e_img =  models.ImageField(upload_to='pics')
+    startdate = models.DateField()
+    enddate = models.DateField()
