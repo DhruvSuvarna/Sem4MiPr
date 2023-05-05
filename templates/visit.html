@@ -1,0 +1,50 @@
+{% extends 'donor.html' %}
+
+    {% block content %}
+
+    {% if reminder %}
+    <div style="margin-bottom: 20vh; border: 2px solid green; border-radius: 5px; padding: 20px;">
+        <h2>{{reminder}}</h2>
+    </div>
+    {% else %}
+    {%if messages %}
+    {% for message in messages %}
+        <h2 style="color: green;">{{message}}</h2>
+    {% endfor %}
+    {% endif %}
+    <div class="form" style="margin-bottom: 20vh; border: 2px solid green; border-radius: 5px; padding: 20px;">
+        <form action="visit" method="post">
+        {% csrf_token %}
+          <div class="form-group px-3 mb-3">
+            <label for="validationDefault04" class="form-label">Choose Reason for visit:</label>
+            <select class="form-select" name="reason" id="validationDefault04" required>
+                <option selected disabled value="">Choose any 1</option>
+                <option>To celebrate your Birthday</option>
+                <option>To personally donate items to Orphanage</option>
+                <option>Other Reasons</option>
+            </select>
+          </div>
+          
+          <div class="form-group px-3 mb-3">
+            <label for="orphanage-select" class="form-label">Select Orphanage to visit:</label>
+            <select class="form-control" id="orphanage-select" name="orphanage" required>
+                <option value="">-- Select Orphanage --</option>
+                {% for orph in orphs %}
+                    <option value="{{ orph.name }}">{{ orph.name }}</option>
+                {% endfor %}
+            </select>
+          </div>
+
+          <div class="form-group px-3 mb-3">
+            <label for="formGroupExampleInput">Date of visit</label>
+            <input type="date" name="date" class="form-control" id="formGroupExampleInput">
+          </div>
+            
+          <div class="button px-1">   
+              <input type="submit" class="btn btn-primary text-center btn-md" value="Apply">
+          </div>
+        </form>
+      </div>
+    {% endif %}
+    
+    {% endblock %}

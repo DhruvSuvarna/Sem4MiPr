@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Orphanage_Display, Suggestions
 from Donor.models import UtilityDonation, ServiceDonation
-from Orphanage.models import Orphanage_Details
+from Orphanage.models import Orphanage_Details, Orphanage_Events
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -14,10 +14,16 @@ def home(request):
         district = request.POST['search']
         district = district.title()
         orphs = Orphanage_Display.objects.filter(location__contains=district)
-        return render(request,'index.html', {'orphs':orphs, 'scroll_target': 'ao'} )
+        events = Orphanage_Events.objects.all()
+        event_count = str(Orphanage_Events.objects.count())
+        print(type(event_count))
+        return render(request,'index.html', {'orphs':orphs, 'scroll_target': 'ao', 'events': events, 'event_count': event_count} )
     
     orphs = Orphanage_Display.objects.all()
-    return render(request,'index.html', {'orphs':orphs})
+    events = Orphanage_Events.objects.all()
+    event_count = str(Orphanage_Events.objects.count())
+    print(type(event_count))
+    return render(request,'index.html', {'orphs':orphs, 'events': events, 'event_count': event_count})
 
 def about(request):
     return render(request,'about.html')

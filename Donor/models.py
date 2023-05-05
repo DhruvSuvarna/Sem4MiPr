@@ -27,3 +27,21 @@ class DonorProfile(models.Model):
     profile_pic =  models.ImageField(upload_to='pics')
     mobile = models.BigIntegerField()
     location = models.CharField(max_length=150)
+class Visit(models.Model):
+    
+    donorusername = models.CharField(max_length=150)
+    orphanageusername = models.CharField(max_length=150)
+    orphanagename = models.TextField()
+    reason = models.CharField(max_length=150)
+    mobile = models.BigIntegerField()
+    status = models.CharField(max_length=150, default='pending')
+
+class Visits(models.Model):
+    
+    donorusername = models.CharField(max_length=150)
+    orphanageusername = models.CharField(max_length=150)
+    orphanagename = models.TextField()
+    reason = models.CharField(max_length=150)
+    mobile = models.BigIntegerField()
+    date = models.DateField()
+    status = models.CharField(max_length=150, default='pending')

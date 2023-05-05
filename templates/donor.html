@@ -83,12 +83,25 @@
       <div class="container" style="flex-basis: 50%;">
         <h1 style="margin-left: 14vw;">Your Profile</h1>
         <div class="profile-bg" style="background-color:rgb(214, 214, 214); padding: 20px; width: fit-content; border-radius: 10%; margin-left: 10vw;">
-          {% if profilepic %}
-          <img src="{{profilepic}}" alt="Profile Image" height="300" width="300" style="border-radius: 50%;">
+          {% if donor %}
+          <img src="{{donor.profile_pic.url}}" alt="Profile Image" height="300" width="300" style="border-radius: 50%;">
           {%else %}
           <img src="{% static 'img/donors/dummydonor.jpg' %}" alt="Profile Image" height="300" width="300" style="border-radius: 50%;">
           {% endif %}
         </div>
+        {% if donor %}
+        <div style="margin-left: 12vw; margin-top: 3vh;padding-right: 12vw;">
+          <h4>Name: {{donor.name}}</h4>
+          <h4>Mobile: {{donor.mobile}}</h4>
+          <h4>Location: {{donor.location}}</h4>
+        </div>
+        {% else %}
+        <div style="margin-left: 12vw; margin-top: 3vh;padding-right: 12vw;">
+          <h4>Name: </h4>
+          <h4>Mobile: </h4>
+          <h4>Location: </h4>
+        </div>
+        {% endif %}
       </div>
   
       <div class="container" style="flex-basis: 50%;">
@@ -96,7 +109,7 @@
           <div class="card-body">
             <h5 class="card-title"><b>Add Your Details</b></h5>
             <p class="card-text">
-              Add your orphanage name, location, images and events organized by you.
+              You can add your profile details here
             </p>
             <a href="add_profile" class="btn btn-light">Add Details</a>
           </div>
@@ -106,7 +119,7 @@
           <div class="card-body">
             <h5 class="card-title"><b>Donate</b></h5>
             <p class="card-text">
-              View donations received by your orphanage and the total amount earned.
+              You can donate to the specific orphanage you want to over here 
             </p>
             <a href="/donation" class="btn btn-light">Donate</a>
           </div>
@@ -116,11 +129,32 @@
           <div class="card-body">
             <h5 class="card-title"><b>Your Donations</b></h5>
             <p class="card-text">
-              View the details of your orphanage that you have added.
+              You can check out your past donations here
             </p>
             <a href="#" class="btn btn-light">Your Donations</a>
           </div>
         </div>
+
+        <div class="card mt-5" style="background: linear-gradient(to left, rgb(153, 75, 255), rgb(193, 0, 236)); margin-right: 8vw;">
+          <div class="card-body">
+            <h5 class="card-title"><b>Apply for visit</b></h5>
+            <p class="card-text">
+              If you want to personally visit the orphanage for any reason you can apply for it here
+            </p>
+            <a href="visit" class="btn btn-light">Apply for visit</a>
+          </div>
+        </div>
+
+        <div class="card mt-5" style="background: linear-gradient(to left, rgb(236, 0, 220), rgb(255, 75, 183)); margin-right: 8vw;">
+          <div class="card-body">
+            <h5 class="card-title"><b>Check Visit Status</b></h5>
+            <p class="card-text">
+              You can check here whether your visit application has been approved or not
+            </p>
+            <a href="#" class="btn btn-light">Check Visit Status</a>
+          </div>
+        </div>
+
       </div>
     </div>
      
@@ -131,6 +165,18 @@
             <!-- Extra details will be added here -->
         {% endblock %}
     </div>
+
+    <script>
+      window.onload = function() {
+          var target = "{{ scroll_target }}";
+          if (target) {
+              var element = document.getElementById(target);
+              if (element) {
+                  element.scrollIntoView();
+              }
+          }
+      };
+    </script>
 
     <!-- Include Bootstrap JS -->
     <script

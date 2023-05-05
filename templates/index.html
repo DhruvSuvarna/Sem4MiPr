@@ -148,13 +148,45 @@
 
       <div class="ongoing_events">Events</div>
       <!-- image carousel -->
+      {% if events %}
+      <div class="container-fluid mb-3" style="justify-content: center; width: 50vw; height: fit-content;">
+        <div id="carouselExampleCaptions" class="carousel slide mx-3">
+          <div class="carousel-indicators" id="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            </div>
+          <div class="carousel-inner">
+            {% for event in events %}
+            <div class="carousel-item active">
+              <img src="{{event.e_img.url}}" class="d-block" alt="..." height="400" width="800">
+              <div class="carousel-caption d-none d-md-block" style="background-color: rgba(0, 0, 0, 0.404); color: yellow;">
+                <h5>{{event.e_name}}</h5>
+                <p>{{event.e_desc}}<br><br>
+                  {% if event.startdate == event.enddate %}
+                  To be held on {{event.startdate}}
+                  {% else %}
+                  To be held from {{event.startdate}} to {{event.enddate}}
+                  {% endif %}
+                </p>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: rgb(255, 174, 0);"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true" style="background-color: rgb(255, 174, 0);"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+      {% else %}
       <div class="container-fluid mb-3" style="justify-content: center; width: fit-content; height: fit-content;">
         <div id="carouselExampleCaptions" class="carousel slide mx-3">
           <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-          </div>
+            
           <div class="carousel-inner">
             <div class="carousel-item active">
               <img src="{% static 'img/car1.png' %}" class="d-block" alt="..." height="400" width="800">
@@ -188,6 +220,8 @@
           </button>
         </div>
       </div>
+      {% endif %}
+      
       
 
     <footer style="margin-top: 50px;">
@@ -195,8 +229,8 @@
         <div class="contact-info">
           <h3 id="contact">Contact Us</h3>
           <p>
-            123 Main St<br />Anytown, USA 12345<br />Phone: (555) 555-5555<br />Email:
-            info@example.com
+            I.C. Colony<br>Borivali(W)<br>Mumbai-4001003<br />Phone: 8657606549 <br />Email:
+            dh@gmail.com
           </p>
         </div>
         <div class="social-media">
@@ -240,7 +274,20 @@
                   element.scrollIntoView();
               }
           }
-      };
+      }; 
+      var event_count = '{{event_count}}' ;
+      event_count = parseInt(event_count)
+      const buttonContainer = document.getElementById("carousel-indicators");
+
+      for (let i = 0; i < event_count-1 ; i++) {
+        const button = document.createElement("button");
+        button.setAttribute("type", "button");
+        button.setAttribute("data-bs-target", "#carouselExampleCaptions");
+        button.setAttribute("data-bs-slide-to", (i+1).toString());
+        button.setAttribute("aria-label", `Slide ${i + 2}`);
+        buttonContainer.appendChild(button);
+      }
+
     </script>
 
     <!--bootstrap js link-->
