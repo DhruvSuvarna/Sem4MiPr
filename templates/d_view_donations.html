@@ -1,0 +1,57 @@
+{% extends 'donor.html' %}
+
+    {% block content %}
+
+    {% if utdonations %}
+    
+    <div class="container mt-5">
+        {% for utdonation in utdonations %}
+        <div class="mt-3" style="border: 2px solid rgb(11, 172, 86); border-radius: 2vh; background-color:rgb(243, 243, 243); width: 75vw;">    
+          <h3 class="text-center mt-3">You Donated</h3>
+              <center><div class="mx-3 my-3">
+                  <h4>₹ {{utdonation.money}}</h4>
+                  <h4>{{utdonation.grains_no}} kg of {{utdonation.grains}}</h4>
+                  <h4>{{utdonation.books_no}} {{utdonation.books}}</h4>
+              </div></center>
+          <h3 class="text-center">To</h3>
+              <center><div class="mx-3 my-3">
+                <h4>{{utdonation.orphanagename}}</h4>
+                {% for orphanage in orphanages %}
+                {% if orphanage.name == utdonation.orphanagename %}
+                <img style="border-radius: 5px;" src="{{orphanage.img.url}}" height="100" width="100">
+                {% endif %}
+                {% endfor %}
+              </div></center>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if svdonations %}
+        {% for svdonation in svdonations %}
+        <div class="container mt-5">
+          <div class="mt-3" style="border: 2px solid rgb(11, 172, 86); border-radius: 2vh; background-color:rgb(243, 243, 243); width: 75vw;">    
+            <h3 class="text-center mt-3">You will be Donating the following Service</h3>
+                <center><div class="mx-3 my-3">
+                    <b><h4>{{svdonation.service}}</h4></b>
+                </div></center>
+            <h3 class="text-center">To</h3>
+                <center><div class="mx-3 my-3">
+                  <b><h4>{{svdonation.orphanagename}}</h4></b>
+                  {% for orphanage in orphanages %}
+                  {% if orphanage.name == svdonation.orphanagename %}
+                  <img style="border-radius: 5px;" src="{{orphanage.img.url}}" height="100" width="100">
+                  {% endif %}
+                  {% endfor %}
+                </div></center>
+            <h3 class="text-center">You will be contacted by {{svdonation.orphanagename}} on below number</h3>
+                <center><div class="mx-3 my-3">
+                  <b><h4>{{svdonation.mobile}}</h4></b>
+                </div></center>
+          </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+    
+    {% endblock %}

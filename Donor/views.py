@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from accounts.models import CustomUser
-from .models import DonorProfile, Visits
+from .models import DonorProfile, Visits, UtilityDonation, ServiceDonation
 from Orph.models import Orphanage_Display
 from django.conf import settings
 from django.contrib import messages
@@ -69,6 +69,29 @@ def add_profile(request):
 
     return render(request, 'd_add_profile.html', {'scroll_target': 'main-content'})
 
+@login_required(login_url=settings.DONOR_LOGIN_URL)
+def view_donation(request):
+    username = request.user.username
+    if DonorProfile.objects.filter(username= username).exists:
+        donor = DonorProfile.objects.get(username= username)
+    if UtilityDonation.objects.filter(donorname= username).exists() and ServiceDonation.objects.filter(donorname= username).exists():
+        utdonations = UtilityDonation.objects.filter(donorname= username)
+        svdonations = ServiceDonation.objects.filter(donorname= username)
+        orphanages = Orphanage_Display.objects.all()
+        return render(request, 'd_view_donations.html', {'utdonations': utdonations, 'svdonations': svdonations, 'orphanages': orphanages, 'donor': donor, 'scroll_target': 'main-content'})
+    elif UtilityDonation.objects.filter(donorname= username).exists():
+        utdonations = UtilityDonation.objects.filter(donorname= username)
+        orphanages = Orphanage_Display.objects.all()
+        return render(request, 'd_view_donations.html',{'utdonations': utdonations, 'orphanages': orphanages, 'donor': donor, 'scroll_target': 'main-content'})
+    elif ServiceDonation.objects.filter(donorname= username).exists():
+        svdonations = ServiceDonation.objects.filter(donorname= username)
+        orphanages = Orphanage_Display.objects.all()
+        return render(request, 'd_view_donations.html', {'svdonations': svdonations, 'orphanages': orphanages, 'donor': donor, 'scroll_target': 'main-content'})
+    else:
+        return render(request, 'd_view_donations.html', {'donor': donor, 'scroll_target': 'main-content'})
+
+
+@login_required(login_url=settings.DONOR_LOGIN_URL)
 def visit(request):
     username = request.user.username
     if DonorProfile.objects.filter(username= username).exists:
