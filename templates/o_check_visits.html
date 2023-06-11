@@ -1,0 +1,82 @@
+{% extends 'orphanage.html' %}
+
+{% block content %}
+    <!-- {% with index=0 %} -->
+    {% if not visits %}
+        <div style="border: 2px solid rgb(87, 0, 128); border-radius: 5vh; padding: 5vh;">
+            <h1>It looks like you haven't received any visit requests yet</h1>
+        </div>
+    {% else %}
+        <div style="margin-top: 4vh; margin-bottom: 4vh; padding: 1vh;">
+            <center><h1 style="color: rgb(87, 0, 128)">Visit Requests</h1></center>
+            {% for visit in visits %}
+            <!--{% with index=index|add:1 %}
+            {% endwith %} -->
+            <div style="border: 2px solid rgb(87, 0, 128); border-radius: 5vh; padding: 5vh; margin-top: 3vh">
+                <h4>Donor {{visit.donorusername}} 
+                    <img src="{{visit.pic}}" alt="donor profile pic" height="50" width="50" style="border-radius: 50%;">
+                    wants to visit</h4>
+                <p>Reason: {{visit.reason}}</p>
+                <p>Date: {{visit.date}}</p>
+                {% if visit.status == "pending" %}
+                <form id="form" action="check_visits" method="post">
+                    {% csrf_token %}
+                    <input type="text" id="choice" name="choice" hidden>
+                    <input type="text" name="donorname" value="{{visit.donorusername}}" hidden>
+                    <input type="button" value="Accept" name="accept" id="accept" style="background-color: rgb(0, 255, 0); border-radius: 10%;">
+                    <input type="button" value="Reject" name="Reject" id="reject" style="background-color: rgb(255, 81, 81); border-radius: 10%;">
+                </form>
+                {% endif %}
+
+                {% if visit.status == "accepted" %}
+                <button style="background-color:rgb(0, 255, 0)">
+                    <h4>{{visit.status}}</h4>
+                </button>
+                {% endif %}
+
+                {% if visit.status == "rejected" %}
+                <button style="background-color:rgb(255, 81, 81)">
+                    <h4>{{visit.status}}</h4>
+                </button>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    
+
+    <script>
+        window.onload = function() {
+            var target = "{{ scroll_target }}";
+            if (target) {
+                var element = document.getElementById(target);
+                if (element) {
+                    element.scrollIntoView();
+                }
+            }
+        };
+        //var index = "{{index}}"
+        //index = parseInt(index)
+        //var accept = new Array(index).fill(null);
+        //var reject = new Array(index).fill(null);
+        //var choice = new Array(index).fill(null);
+        //var form = new Array(index).fill(null);
+        //for (var i=0; i < index; i++){
+            const accept = document.getElementById('accept')
+            const reject = document.getElementById('reject')
+            const choice = document.getElementById('choice')
+            const form = document.getElementById('form')
+
+            accept.addEventListener('click', () => {
+                choice.value = 'accepted'
+                form.submit()
+            });
+            reject.addEventListener('click', () => {
+                choice.value = 'rejected'
+                form.submit()
+            });
+        //}
+    </script>
+    <!-- {% endwith %} -->
+{% endblock %}

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Orphanage_Details, Orphanage_Events
 from Orph.models import Orphanage_Display
-from Donor.models import UtilityDonation, ServiceDonation, DonorProfile
+from Donor.models import UtilityDonation, ServiceDonation, DonorProfile, Visits
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
@@ -226,3 +226,34 @@ def add_events(request):
     else:
         check = "Add your orphanage details first"
         return render(request, 'o_add_events.html', {'check': check})
+    
+@login_required(login_url=settings.ORPHANAGE_LOGIN_URL)
+def check_visits(request):
+    username = request.user.username
+    if Visits.objects.filter(orphanageusername= username).exists():
+        visitsAll = Visits.objects.all()
+        visits = []
+        i=0
+        for visit in visitsAll:
+            if visit.orphanageusername == username:
+                visits.append(visit)
+                visits[0].pic = DonorProfile.objects.get(username=visit.donorusername).profile_pic.url
+                reason = visits[0].reason
+                if 'your' in reason:
+                    visits[0].reason = reason.replace('your', 'their')
+                i += 1
+        if request.method == 'POST':
+            choice = request.POST['choice']
+            donorname = request.POST['donorname']
+            visit = Visits.objects.get(donorusername= donorname)
+            visit.status = choice
+            visit.save()
+            for v in visits:
+                if v.donorusername == donorname:
+                    v.status = choice
+            return render(request, 'o_check_visits.html', {'scroll_target': '#main-content', 'visits': visits})
+        # donorname = visits.donorusername
+        # donors = Donorprofile.objects.filter(username=donorname)
+        return render(request, 'o_check_visits.html', {'scroll_target': '#main-content', 'visits': visits})
+    else:
+        return render(request, 'o_check_visits.html', {'scroll_target': '#main-content'})

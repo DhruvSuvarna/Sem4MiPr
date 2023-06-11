@@ -120,3 +120,21 @@ def visit(request):
     else: 
         reminder = "You have to complete your profile first"
         return render(request, 'visit.html', {'scroll_target': 'main-content', 'reminder': reminder})
+    
+@login_required(login_url=settings.DONOR_LOGIN_URL)
+def visit_status(request):
+    username = request.user.username
+    if DonorProfile.objects.filter(username= username).exists:
+        donor = DonorProfile.objects.get(username= username)
+        if Visits.objects.filter(donorusername= username).exists:
+            visits = Visits.objects.filter(donorusername= username)
+            for visit in visits:
+                vs = visit.status
+                visit.status = vs.title()
+
+            return render(request, 'd_check_visits.html', {'scroll_target': 'main-content', 'donor': donor, 'visits': visits})
+
+        return render(request, 'd_check_visits.html', {'scroll_target': 'main-content', 'donor': donor})
+    else: 
+        reminder = "You have to complete your profile first"
+        return render(request, 'd_check_visits.html', {'scroll_target': 'main-content', 'reminder': reminder})

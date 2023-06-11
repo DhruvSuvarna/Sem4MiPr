@@ -1,0 +1,27 @@
+{% extends 'donor.html' %}
+
+{% block content %}
+    {% if not visits %}
+    <div style="border: 2px solid rgb(87, 0, 128); border-radius: 5vh; padding: 5vh;">
+        <h1>It looks like you haven't applied for a visit to any orphanage</h1>
+    </div>
+    {% else %}
+    <div style="margin-top: 4vh; margin-bottom: 4vh; padding: 1vh;">
+        <center><h1 style="color: rgb(87, 0, 128)">Visit Status</h1></center>
+        {% for visit in visits %}
+        <div style="border: 2px solid rgb(87, 0, 128); border-radius: 5vh; padding: 5vh; margin-top: 3vh">
+            <h3>Visited Request to {{visit.orphanagename}}</h3>
+            <h3 style="display: flex;">Status: &nbsp;
+                {% if visit.status == "Accepted" %}
+                <div style="background-color: green; color: white; width: fit-content; padding: 2px; border-radius: 2px;">{{visit.status}}</div>
+                {% elif visit.status == "Rejected" %}
+                <div style="background-color: red; color: white; width: fit-content; padding: 2px; border-radius: 2px;">{{visit.status}}</div>
+                {% else %}
+                <div style="background-color: orange; color: black; width: fit-content; padding: 2px; border-radius: 2px;">{{visit.status}}</div>
+                {% endif %}
+            </h3>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+{% endblock %}

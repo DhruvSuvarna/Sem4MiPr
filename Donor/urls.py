@@ -5,5 +5,6 @@ urlpatterns = [
     path('', views.donor, name='donor'),
     path('add_profile', views.add_profile, name='add_profile'),
     path('view_donation', views.view_donation, name='view_donation'),
-    path('visit', views.visit, name='visit')
+    path('visit', views.visit, name='visit'),
+    path('visit_status', views.visit_status, name='visit_status')
 ]
