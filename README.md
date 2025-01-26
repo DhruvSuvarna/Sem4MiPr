@@ -4,6 +4,8 @@ A website that provides potential donors a common platform to connect with multi
 ## Technology used
 Django
 
+##
+
 To run this project:
 
 1. Clone the project
