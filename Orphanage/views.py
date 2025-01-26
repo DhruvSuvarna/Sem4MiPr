@@ -101,8 +101,8 @@ def add_details(request):
                 orphanage_dis.weblink = o_weblink
             orphanage.save()
             orphanage_dis.save()
-            messages = 'Details Edited Successfully!'
-            return render(request, 'o_add_details.html', {'specialCheck': specialCheck, 'scroll_target': '#main-content', 'orphanage': orphanage,'messages': messages})
+            success_message = 'Details Edited Successfully!'
+            return render(request, 'o_add_details.html', {'specialCheck': specialCheck, 'scroll_target': '#main-content', 'orphanage': orphanage,'messages': success_message})
 
         return render(request, 'o_add_details.html', {'specialCheck': specialCheck, 'scroll_target': '#main-content', 'orphanage': orphanage})
         

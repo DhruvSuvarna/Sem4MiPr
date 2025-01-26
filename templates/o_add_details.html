@@ -2,12 +2,6 @@
 
 {% block content %}
 <div>
-    <div>
-        {% for message in messages %}
-            <h3>{{message}}</h3>
-        {% endfor %}
-    </div>
-
     <h3 class="text-center">Register Orphanage here</h3>
     {% if specialCheck is defined %}
     <form action="add_details" method="post" enctype="multipart/form-data" style="border: 2px solid rgb(11, 172, 86); border-radius: 2vh; background-color:rgb(243, 243, 243);">
